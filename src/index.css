@@ -1,0 +1,11 @@
+@tailwind base;
+
+@layer base {
+  body {
+    @apply text-accent;
+    @apply font-mono
+  } 
+}
+
+@tailwind components;
+@tailwind utilities;
