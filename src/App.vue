@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import Navbar from './components/Navbar.vue'
 import Footer from './components/Footer.vue'
+import Faq from './components/Faq.vue'
 
 </script>
 
@@ -15,11 +16,15 @@ import Footer from './components/Footer.vue'
         
   
       </div>
-      <div class="bg-gradient-to-t from-secondary to-primary min-h-screen">
-        
-  
+      <div class="bg-gradient-to-t from-secondary to-primary flex flex-col min-h-screen">
+        <div class="container mx-auto flex-grow mt-20 flex flex-col justify-start">
+          <h1 class="text-4xl ml-4 font-bold">Frequently Asked Questions</h1>
+          <Faq></Faq>
+        </div>
+        <div class="divider"></div>
+        <Footer></Footer>
       </div>
-      <Footer></Footer>
+      
     </div>
   </main>
   
