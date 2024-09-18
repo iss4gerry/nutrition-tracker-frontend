@@ -5,7 +5,7 @@
 <template>
     <footer class="footer footer-center bg-opacity-0 backdrop-blur rounded p-10">
         <nav class="grid grid-flow-col gap-4">
-          <a class="link link-hover">About us</a>
+          <a class="link link-hover">About Me</a>
           <a class="link link-hover">Contact</a>
           <a class="link link-hover">Jobs</a>
           <a class="link link-hover">Press kit</a>
@@ -48,7 +48,7 @@
           </div>
         </nav>
         <aside>
-          <p>Copyright © {new Date().getFullYear()} - All right reserved by ACME Industries Ltd</p>
+          <p> Made With ❤️ by <a href="https://github.com/iss4gerry" target="_blank">Gerry</a></p>
         </aside>
       </footer>
 </template>
