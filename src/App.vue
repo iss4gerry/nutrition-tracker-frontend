@@ -8,7 +8,7 @@ import Footer from './components/Footer.vue'
   <main>
     <div class="bg-secondary">
       <Navbar></Navbar>
-      <div class="bg-gradient-to-t from-primary to-secondary min-h-screen flex-col">
+      <div class="bg-gradient-to-t from-primary to-secondary min-h-screen flex-col -mt-11 md:mt-10">
       <router-view></router-view>
       </div>
       <div class="bg-primary min-h-screen">

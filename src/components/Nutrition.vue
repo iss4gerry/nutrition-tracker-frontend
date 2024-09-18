@@ -17,7 +17,7 @@ const totalProgress = 5000;
             <p class="text-sm text-gray-600">
                 {{ currentProgress.toLocaleString() }} / {{ totalProgress.toLocaleString() }}
             </p>
-            <progress class="progress progress-primary w-56 " value="50" max="100">50</progress>
+            <progress class="progress progress-primary w-56">50</progress>
         </div>
       </div>
     </div>

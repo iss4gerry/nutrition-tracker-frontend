@@ -24,10 +24,7 @@ const handleFileInput = (event: Event) => {
       @change="handleFileInput"
     />
     <p class="text-sm text-gray-500">Supported formats: JPG, PNG</p>
-    
-    <div class="divider"></div>
     <p class="text-lg font-semibold text-gray-700">Preview</p>
-
     <div v-if="selectedImage" class="w-full h-[35vh] bg-gray-200 rounded-lg overflow-hidden shadow-md">
         <img :src="selectedImage" alt="Image Preview" class="w-full h-full object-cover" />
       </div>
