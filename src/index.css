@@ -2,7 +2,7 @@
 
 @layer base {
   main {
-    @apply text-accent;
+    @apply text-gray-50;
     @apply font-mono
   } 
 }

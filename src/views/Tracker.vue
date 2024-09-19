@@ -2,6 +2,7 @@
 import Switcher from '../components/Switcher.vue'
 import ImageTracker from '../components/ImageTracker.vue'
 import Nutrition from '../components/Nutrition.vue'
+import History from '../components/History.vue';
 
 </script>
 
@@ -21,6 +22,13 @@ import Nutrition from '../components/Nutrition.vue'
           <Nutrition name="Sugar"></Nutrition>
           <Nutrition name="Fat"></Nutrition>
           <Nutrition name="Protein"></Nutrition>
+        </div>
+      </div>
+    </div>
+    <div class="container mx-auto flex flex-col md:flex-row justify-center space-x-0 md:space-x-0 space-y-45 md:space-y-0 mt-20">
+      <div class="card text-neutral-content w-full md:w-[105vh] -mt-3 md:mt-0">
+        <div class="card-body items-center text-center">
+          <History></History>
         </div>
       </div>
     </div>
