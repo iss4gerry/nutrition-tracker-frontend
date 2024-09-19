@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <div class="navbar bg-opacity-0 backdrop-blur z-30 sticky top-0">
+  <div class="navbar bg-opacity-0 sticky z-30 backdrop:blur">
     <div class="navbar-start">
       <div class="dropdown">
         <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
@@ -25,24 +25,32 @@
           class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
           <li><a>Home</a></li>
           <li><a>History</a></li>
-          <li><a>Account</a></li>
+          <li>
+            <a>Account</a>
+            <ul class="p-2">
+              <li><a>Profile</a></li>
+              <li><a>Setting</a></li>
+            </ul>
+          </li>
           <li><a>Logout</a></li>
         </ul>
       </div>
-      <a class="btn btn-ghost text-xl">Fweeble</a>
+      <a class="btn btn-ghost text-xl max-sm:ml-20">Fweeble</a>
     </div>
-    <div class="navbar-end hidden lg:flex">
-
-    </div>
-    <div class="navbar-end hidden lg:flex mr-5">
+    <div class="navbar-center hidden lg:flex">
       <ul class="menu menu-horizontal px-1">
         <li><a>Home</a></li>
         <li><a>History</a></li>
+      </ul>
+    </div>
+    <div class="navbar-end mr-5 max-sm:hidden">
+      <ul class="menu menu-horizontal px-1">
         <li>
           <details>
             <summary>Menu</summary>
-            <ul class="p-2">
+            <ul class="bg-base-100 rounded-t-none p-2">
               <li><a>Account</a></li>
+              <li><a>Setting</a></li>
               <li><a>Logout</a></li>
             </ul>
           </details>
