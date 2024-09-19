@@ -29,6 +29,6 @@ const handleFileInput = (event: Event) => {
         <img :src="selectedImage" alt="Image Preview" class="w-full h-full object-cover" />
       </div>
       <p v-else class="flex items-center justify-center text-gray-500 h-[35vh]">No image selected</p>
-      <button class="btn btn-wide bg-primary text-gray-50">Analyze</button>      
+      <button class="btn btn-wide bg-primary">Analyze</button>      
   </div>
 </template>

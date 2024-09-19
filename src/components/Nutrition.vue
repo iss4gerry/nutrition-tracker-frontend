@@ -14,10 +14,10 @@ const totalProgress = 5000;
         <p class="text-sm w-22 -mb-4">{{ name }}</p>
           <div class="divider lg:divider-vertical"></div>
         <div class="flex flex-col items-center space-x-15 w-full -mt-3">
-            <p class="text-sm text-gray-600">
+            <p class="text-sm text-accent">
                 {{ currentProgress.toLocaleString() }} / {{ totalProgress.toLocaleString() }}
             </p>
-            <progress class="progress progress-primary w-56">50</progress>
+            <progress class="progress progress-accent w-56 bg-primary">50</progress>
         </div>
       </div>
     </div>

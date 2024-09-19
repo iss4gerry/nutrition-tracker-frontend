@@ -29,7 +29,7 @@
           <li><a>Logout</a></li>
         </ul>
       </div>
-      <a class="btn btn-ghost text-xl">FwodTwacker</a>
+      <a class="btn btn-ghost text-xl">Fweeble</a>
     </div>
     <div class="navbar-end hidden lg:flex">
 

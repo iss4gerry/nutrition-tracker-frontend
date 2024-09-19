@@ -2,9 +2,9 @@
 
 @layer base {
   main {
-    @apply text-gray-50;
-    @apply font-mono
-  } 
+    @apply text-accent;
+    @apply font-mono;
+  }
 }
 
 @tailwind components;

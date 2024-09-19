@@ -25,7 +25,7 @@ import History from '../components/History.vue';
         </div>
       </div>
     </div>
-    <div class="container mx-auto flex flex-col md:flex-row justify-center space-x-0 md:space-x-0 space-y-45 md:space-y-0 mt-20">
+    <div class="container mx-auto flex flex-col md:flex-row justify-center space-x-0 md:space-x-0 space-y-45 md:space-y-0 md:mt-20 -mt-10">
       <div class="card text-neutral-content w-full md:w-[105vh] -mt-3 md:mt-0">
         <div class="card-body items-center text-center">
           <History></History>
