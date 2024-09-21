@@ -3,7 +3,6 @@
 @layer base {
   main {
     @apply text-accent;
-    @apply font-mono;
   }
 }
 

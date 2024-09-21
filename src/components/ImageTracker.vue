@@ -16,7 +16,7 @@ const handleFileInput = (event: Event) => {
 </script>
 
 <template>
-  <div class="container mx-auto flex flex-col items-center space-y-4 p-4 bg-gray-50 rounded-xl shadow-lg max-w-md">
+  <div class="container mx-auto flex flex-col items-center space-y-4 p-4 bg-gray-50 rounded-xl shadow-inner max-w-md">
     <p class="text-lg font-semibold text-gray-700">Upload Your Food Image</p>
     <input
       type="file"

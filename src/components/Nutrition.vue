@@ -7,7 +7,7 @@ const totalProgress = 5000;
 </script>
 
 <template>
-  <div class="card text-neutral-content w-full bg-gray-50 rounded-lg shadow-lg py-[-30px]">
+  <div class="card text-neutral-content w-full bg-gray-50 rounded-lg shadow-inner py-[-30px]">
     <div class="card-body items-center text-center space-y-1">
          
       <div class="flex flex-col items-center space-x-15 -mt-5 -mb-3">
