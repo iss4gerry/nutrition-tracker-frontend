@@ -3,17 +3,36 @@
 </script>
 
 <template>
-    <div class="container mx-auto flex flex-col items-center space-y-4 p-4 bg-gray-50 rounded-xl shadow-inner max-w-md">
-        <p class="text-lg font-semibold text-gray-700">Upload Your Food Image</p>
-        <input
-          type="file"
-          class="file-input file-input-bordered file-input-primary w-full max-w-xs rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-primary"
-        />
-        <p class="text-sm text-gray-500">Supported formats: JPG, PNG</p>
-        <p class="text-lg font-semibold text-gray-700">Preview</p>
-        <div class="w-full h-[35vh] bg-gray-200 rounded-lg overflow-hidden shadow-md">
-            <img alt="Image Preview" class="w-full h-full object-cover" />
-          </div>
-          <button class="btn btn-wide bg-primary">Analyze</button>      
-      </div>
+    <div class="container mx-auto flex flex-col items-center space-y-4 p-4 bg-gray-50 rounded-xl shadow-inner max-w-md min-h-[72vh]">
+        <div class="flex flex-col -mb-8">
+            <p class="text-xl font-bold text-accent -mb-3">Food recommendations</p>
+            <div class="divider"></div>
+        </div>
+        <div class="card-container">
+
+            <div class="card-body m-2 md:mt-0 bg-slate-50 rounded-2xl p-6 max-h-[130px] md:max-h-[140px]">
+                <h2 class="card-title">Food Name</h2>
+                <div class="flex justify-between items-start">
+                  <div class="text-start flex-grow">
+                    <p class="multiline-ellipsis">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam obcaecati, officiis perferendis eveniet fugit quas dolore doloremque hic voluptates Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto recusandae praesentium molestias quo velit adipisci neque? Quae maiores soluta qui illo voluptates saepe, maxime pariatur rem totam aliquid labore adipisci.
+                    </p>
+                  </div>
+                  <button class="btn btn-primary ml-4">Detail</button>
+                </div>
+                <div class="divider"></div>
+            </div>   
+         </div>
+    </div>
 </template>
+
+<style scoped>
+.multiline-ellipsis {
+   display: -webkit-box;
+   -webkit-box-orient: vertical;
+   -webkit-line-clamp: 2;
+   line-clamp: 2; /* Batasi jumlah baris, misalnya 3 baris */
+   overflow: hidden;
+   text-overflow: ellipsis;
+ }
+ </style>
