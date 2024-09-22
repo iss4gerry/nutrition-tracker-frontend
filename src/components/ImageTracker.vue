@@ -16,7 +16,7 @@ const handleFileInput = (event: Event) => {
 
 <template>
   <div class="container mx-auto flex flex-col items-center space-y-4 p-4 bg-gray-50 rounded-xl shadow-inner max-w-md">
-    <p class="text-lg font-semibold text-gray-700">Upload Your Food Image</p>
+    <p class="text-lg font-semibold text-gray-700">Upload your food image</p>
     <input
       type="file"
       class="file-input file-input-bordered file-input-primary w-full max-w-xs rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-primary"

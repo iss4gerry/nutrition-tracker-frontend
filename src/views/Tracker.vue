@@ -7,12 +7,11 @@ import History from '../components/History.vue';
 import TextTracker from '../components/TextTracker.vue'
 import FoodIdea from '../components/FoodIdea.vue'
 
-const active = ref('image')
+const active = ref<string>('image')
 
 const getStatus = (activeTab: string) => {
   active.value = activeTab
 }
-
 
 </script>
 
