@@ -3,7 +3,6 @@ import { ref } from 'vue'
 
 const selectedImage = ref<string | null>(null)
 
-// Fungsi untuk menangani input file
 const handleFileInput = (event: Event) => {
   const input = event.target as HTMLInputElement
   if (input.files && input.files[0]) {
