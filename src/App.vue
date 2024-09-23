@@ -19,8 +19,7 @@ import Faq from './components/Faq.vue'
         </div>
         <div class="divider"></div>
         <Footer></Footer>
-      </div>
-      
+    </div>  
     </div>
   </main>
   

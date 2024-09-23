@@ -11,7 +11,7 @@ const totalProgress = 5000;
     <div class="card-body items-center text-center space-y-1">
          
       <div class="flex flex-col items-center space-x-15 -mt-5 -mb-3">
-        <p class="text-sm w-22 -mb-4">{{ name }}</p>
+        <p class="text-sm w-22 -mb-4 font-semibold">{{ name }}</p>
           <div class="divider lg:divider-vertical"></div>
         <div class="flex flex-col items-center space-x-15 w-full -mt-3">
             <p class="text-sm text-accent">
