@@ -2,9 +2,9 @@
 </script>
 
 <template>
-    <div class="flex justify-center items-center w-screen h-[80vh] -mt-10">
-        <div class="card text-primary-content w-[50vh] h-[50vh]">
-            <div class="card-body backdrop-blur-sm">
+    <div class="flex justify-center items-center w-screen max-sm:w-[44vh] h-[80vh] -mt-10">
+        <div class="card text-primary-content h-[50vh]">
+            <div class="card-body max-sm:w-[44vh] backdrop-blur-sm mt-10">
                 <div class="flex flex-col justify-center items-center space-y-4 w-full">
                     <h2 class="text-2xl font-semibold">Login</h2>
                       <label class="input input-bordered flex items-center gap-2">
@@ -32,12 +32,16 @@
                         <input type="password" class="grow w-[25vh]" placeholder="Password"/>
                       </label>
                       <button class="btn w-[31vh] bg-accent text-gray-50">Login</button>
-                      <div class="flex flex-row w-[31vh] justify-between">
+                      <div class="flex flex-row w-[30vh] justify-between">
                         <div class="flex flex-row justify-center items-center">
                             <input type="checkbox" class="checkbox w-3 h-3 mr-1"/>
                             <p class="text-xs">Remember me</p>
                         </div>
                         <a href="#" class="text-xs">Forgot Password</a>
+                      </div>
+                      <div class="flex flex-row items-center justify-center">
+                        <p class="text-xs mr-1">Dont have an account?</p>
+                        <a href="#" class="text-xs font-semibold text-gray-500">Register</a>
                       </div>
                       <div class="divider text-xs">Or sign with</div>
                       <div class="flex flex-row flex-wrap w-[30vh] justify-between">

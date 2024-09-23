@@ -1,14 +1,17 @@
 <script setup lang="ts">
+import { ref } from 'vue';
 import Navbar from './components/Navbar.vue'
 import Footer from './components/Footer.vue'
 import Faq from './components/Faq.vue'
+
+const loginStatus = ref<boolean>(true)
 
 </script>
 
 <template>
   <main>
     <div class="bg-secondary">
-      <Navbar></Navbar>
+      <Navbar v-if="loginStatus"></Navbar>
       <div class="bg-gradient-to-t from-primary to-secondary min-h-screen flex-col -mt-11 md:mt-10">
       <router-view></router-view>
       </div>
