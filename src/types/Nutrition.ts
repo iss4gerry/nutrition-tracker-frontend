@@ -19,3 +19,16 @@ export type ProgressNutrition = {
 	totalCarbohydrate: number;
 	totalSugar: number;
 };
+
+export type FoodResponse<T> = {
+	foodInfo: {
+		foodName: string;
+		foodInformation: string;
+		calorie: string;
+		sugar: string;
+		carbohydrate: string;
+		fat: string;
+		protein: string;
+	};
+	progressNutrition: T;
+};

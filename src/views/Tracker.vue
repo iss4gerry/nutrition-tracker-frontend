@@ -72,7 +72,7 @@ onMounted(async () => {
 					name="Carbohydrate"
 					:maxNutrition="dailyNutrition ? dailyNutrition.dailyCarbohydrate : 0"
 					:progressNutrition="
-						progressNutrition ? progressNutrition.totalCalories : 0
+						progressNutrition ? progressNutrition.totalCarbohydrate : 0
 					"
 				></Nutrition>
 				<Nutrition
