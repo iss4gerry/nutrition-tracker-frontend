@@ -6,12 +6,36 @@ import Nutrition from '../components/Nutrition.vue';
 import History from '../components/History.vue';
 import TextTracker from '../components/TextTracker.vue';
 import FoodIdea from '../components/FoodIdea.vue';
+import axios from 'axios';
+import {
+	Response,
+	NutritionResponse,
+	ProgressNutrition,
+} from '../types/Nutrition';
+import { onMounted } from 'vue';
 
 const active = ref<string>('image');
 
 const getStatus = (activeTab: string) => {
 	active.value = activeTab;
 };
+
+const dailyNutrition = ref<NutritionResponse>();
+const progressNutrition = ref<ProgressNutrition>();
+const userId: string = '81d7c4d5-1309-476b-b522-bd96feaba2fe';
+
+onMounted(async () => {
+	const { data } = await axios.get<Response<NutritionResponse>>(
+		`http://localhost:9000/profile/nutrition/${userId}`
+	);
+
+	const progress = await axios.get<Response<ProgressNutrition>>(
+		`http://localhost:9000/profile/nutrition/progress/${userId}`
+	);
+
+	dailyNutrition.value = data.data;
+	progressNutrition.value = progress.data.data;
+});
 </script>
 
 <template>
@@ -29,11 +53,41 @@ const getStatus = (activeTab: string) => {
 		<div class="card text-neutral-content w-full md:w-[50vh] -mt-20">
 			<div class="card-body items-center text-center">
 				<h1 class="text-xl mb-3 h-7"></h1>
-				<Nutrition name="Calorie"></Nutrition>
-				<Nutrition name="Carbohydrate"></Nutrition>
-				<Nutrition name="Sugar"></Nutrition>
-				<Nutrition name="Fat"></Nutrition>
-				<Nutrition name="Protein"></Nutrition>
+				<Nutrition
+					name="Calorie"
+					:maxNutrition="dailyNutrition ? dailyNutrition.dailyCalorie : 0"
+					:progressNutrition="
+						progressNutrition ? progressNutrition.totalCalories : 0
+					"
+				></Nutrition>
+				<Nutrition
+					name="Carbohydrate"
+					:maxNutrition="dailyNutrition ? dailyNutrition.dailyCarbohydrate : 0"
+					:progressNutrition="
+						progressNutrition ? progressNutrition.totalCalories : 0
+					"
+				></Nutrition>
+				<Nutrition
+					name="Sugar"
+					:maxNutrition="dailyNutrition ? dailyNutrition.dailySugar : 0"
+					:progressNutrition="
+						progressNutrition ? progressNutrition.totalSugar : 0
+					"
+				></Nutrition>
+				<Nutrition
+					name="Fat"
+					:maxNutrition="dailyNutrition ? dailyNutrition.dailyFat : 0"
+					:progressNutrition="
+						progressNutrition ? progressNutrition.totalFat : 0
+					"
+				></Nutrition>
+				<Nutrition
+					name="Protein"
+					:maxNutrition="dailyNutrition ? dailyNutrition.dailyProtein : 0"
+					:progressNutrition="
+						progressNutrition ? progressNutrition.totalProtein : 0
+					"
+				></Nutrition>
 			</div>
 		</div>
 	</div>
