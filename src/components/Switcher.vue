@@ -1,14 +1,13 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref } from "vue";
 
-const activeTab = ref<string>('image')
-const emit = defineEmits(['active'])
+const activeTab = ref<string>("image");
+const emit = defineEmits(["active"]);
 
 function setActiveTab(tab: string) {
-  activeTab.value = tab
-  emit('active', activeTab.value)
+  activeTab.value = tab;
+  emit("active", activeTab.value);
 }
-
 </script>
 
 <template>
@@ -18,18 +17,21 @@ function setActiveTab(tab: string) {
       class="tab"
       :class="{ 'tab-active': activeTab === 'text' }"
       @click="setActiveTab('text')"
-    >Text</a>
+      >Text</a
+    >
     <a
       role="tab"
       class="tab"
       :class="{ 'tab-active': activeTab === 'image' }"
       @click="setActiveTab('image')"
-    >Image</a>
+      >Image</a
+    >
     <a
       role="tab"
       class="tab"
       :class="{ 'tab-active': activeTab === 'idea' }"
       @click="setActiveTab('idea')"
-    >Idea</a>
+      >Idea</a
+    >
   </div>
 </template>

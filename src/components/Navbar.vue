@@ -1,6 +1,4 @@
-<script setup lang="ts">
-
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <div class="navbar bg-opacity-0 top-0 sticky z-30 backdrop-blur">
@@ -12,17 +10,20 @@
             class="h-5 w-5"
             fill="none"
             viewBox="0 0 24 24"
-            stroke="currentColor">
+            stroke="currentColor"
+          >
             <path
               stroke-linecap="round"
               stroke-linejoin="round"
               stroke-width="2"
-              d="M4 6h16M4 12h8m-8 6h16" />
+              d="M4 6h16M4 12h8m-8 6h16"
+            />
           </svg>
         </div>
         <ul
           tabindex="0"
-          class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
+          class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+        >
           <li><a>Home</a></li>
           <li><a>History</a></li>
           <li><a>Faq</a></li>

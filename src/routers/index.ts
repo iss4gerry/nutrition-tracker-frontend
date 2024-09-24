@@ -1,27 +1,27 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import Tracker from '../views/Tracker.vue'
-import Login from '../views/Login.vue'
-import Register from '../views/Register.vue'
+import { createRouter, createWebHistory } from 'vue-router';
+import Tracker from '../views/Tracker.vue';
+import Login from '../views/Login.vue';
+import Register from '../views/Register.vue';
 
 const routes = [
     {
         path: '/',
         name: 'home',
-        component: Tracker
+        component: Tracker,
     },
     {
         path: '/login',
         name: 'login',
-        component: Login
+        component: Login,
     },
     {
         path: '/register',
         name: 'register',
-        component: Register
-    }
-]
+        component: Register,
+    },
+];
 
 export const router = createRouter({
     history: createWebHistory(),
-    routes
-})
+    routes,
+});
