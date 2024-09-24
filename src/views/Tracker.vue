@@ -24,16 +24,24 @@ const dailyNutrition = ref<NutritionResponse>();
 const progressNutrition = ref<ProgressNutrition>();
 const userId: string = '81d7c4d5-1309-476b-b522-bd96feaba2fe';
 
-onMounted(async () => {
-	const { data } = await axios.get<Response<NutritionResponse>>(
+const requestNutrition = async () => {
+	return await axios.get<Response<NutritionResponse>>(
 		`http://localhost:9000/profile/nutrition/${userId}`
 	);
+};
 
-	const progress = await axios.get<Response<ProgressNutrition>>(
+const requestProgress = async () => {
+	return await axios.get<Response<ProgressNutrition>>(
 		`http://localhost:9000/profile/nutrition/progress/${userId}`
 	);
+};
 
-	dailyNutrition.value = data.data;
+onMounted(async () => {
+	const nutrition = await requestNutrition();
+
+	const progress = await requestProgress();
+
+	dailyNutrition.value = nutrition.data.data;
 	progressNutrition.value = progress.data.data;
 });
 </script>
