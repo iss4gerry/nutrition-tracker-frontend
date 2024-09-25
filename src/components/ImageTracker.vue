@@ -94,7 +94,7 @@ const analyzeFood = async (event: any) => {
 			v-else-if="foodNutrition"
 			class="w-full h-[35vh] rounded-lg items-center flex flex-col"
 		>
-			<p class="text-lg">𓎦</p>
+			<p class="text-lg md:hidden">𓎦</p>
 			<h1 class="text-xl font-semibold mt-4">
 				{{ foodNutrition.foodInfo.foodName }}
 			</h1>
