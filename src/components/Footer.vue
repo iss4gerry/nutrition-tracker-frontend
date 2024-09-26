@@ -5,7 +5,6 @@
 		<nav class="grid grid-flow-col gap-4">
 			<a class="link link-hover">About Me</a>
 			<a class="link link-hover">Contact</a>
-			<a class="link link-hover">Jobs</a>
 		</nav>
 		<nav>
 			<div class="grid grid-flow-col gap-4">
