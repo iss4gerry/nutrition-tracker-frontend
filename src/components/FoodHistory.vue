@@ -1,17 +1,46 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
+import { ref, watch, onMounted } from 'vue';
 import axios from 'axios';
 import { HistoryResponse, Response } from '../types/Nutrition';
 
 const food = ref<HistoryResponse[]>([]);
 const userId: string = '81d7c4d5-1309-476b-b522-bd96feaba2fe';
-onMounted(async () => {
+const page = ref<number>(1);
+const limit = 4;
+
+const fetchData = async () => {
 	const { data } = await axios.get<Response<HistoryResponse[]>>(
-		`http://localhost:9000/history/${userId}`
+		`http://localhost:9000/history/${userId}`,
+		{
+			params: {
+				page: page.value,
+				limit: limit,
+			},
+		}
 	);
 
 	food.value = data.data;
+};
+
+watch(page, async () => {
+	fetchData();
 });
+
+onMounted(() => {
+	fetchData();
+});
+
+const prevPage = () => {
+	if (page.value > 1) {
+		page.value--;
+	}
+};
+
+const nextPage = () => {
+	if (page.value < 10) {
+		page.value++;
+	}
+};
 </script>
 
 <template>
@@ -39,9 +68,9 @@ onMounted(async () => {
 		</p>
 
 		<div class="join mt-auto">
-			<button class="join-item btn">«</button>
-			<button class="join-item btn">Page 22</button>
-			<button class="join-item btn">»</button>
+			<button class="join-item btn" @click="prevPage">«</button>
+			<button class="join-item btn">{{ page }}</button>
+			<button class="join-item btn" @click="nextPage">»</button>
 		</div>
 	</div>
 </template>
