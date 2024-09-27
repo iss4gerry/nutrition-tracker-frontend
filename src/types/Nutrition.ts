@@ -32,3 +32,16 @@ export type FoodResponse<T> = {
 	};
 	progressNutrition: T;
 };
+
+export type HistoryResponse = {
+	id?: string;
+	userId?: string;
+	foodName: string;
+	foodInformation: string;
+	totalCalorie: number;
+	totalCarbohydrate: number;
+	totalSugar: number;
+	totalFat: number;
+	totalProtein: number;
+	date: Date;
+};
