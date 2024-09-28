@@ -44,6 +44,10 @@ onMounted(async () => {
 	dailyNutrition.value = nutrition.data.data;
 	progressNutrition.value = progress.data.data;
 });
+
+const getProgress = (data: ProgressNutrition) => {
+	progressNutrition.value = data;
+};
 </script>
 
 <template>
@@ -53,7 +57,10 @@ onMounted(async () => {
 		<div class="card text-neutral-content w-full md:w-[50vh] -mt-3 md:mt-0">
 			<div class="card-body items-center text-center">
 				<Switcher @active="getStatus"></Switcher>
-				<ImageTracker v-if="active === 'image'"></ImageTracker>
+				<ImageTracker
+					v-if="active === 'image'"
+					@progress="getProgress"
+				></ImageTracker>
 				<TextTracker v-if="active === 'text'"></TextTracker>
 				<FoodIdea v-if="active === 'idea'"></FoodIdea>
 			</div>

@@ -7,6 +7,7 @@ const selectedImage = ref<string | null>(null);
 const imageForRequest = ref<File | null>(null);
 const loading = ref<boolean>(false);
 const foodNutrition = ref<FoodResponse<ProgressNutrition>>();
+const emit = defineEmits(['progress']);
 
 const handleFileInput = (event: Event) => {
 	foodNutrition.value = undefined;
@@ -62,6 +63,7 @@ const analyzeFood = async (event: any) => {
 		loading.value = false;
 	}
 	foodNutrition.value = response.data.data;
+	emit('progress', response.data.data.progressNutrition);
 };
 </script>
 
