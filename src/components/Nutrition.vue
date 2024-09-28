@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { name, maxNutrition } = defineProps<{
+const { name, maxNutrition, progressNutrition } = defineProps<{
 	name: string;
 	maxNutrition: number;
 	progressNutrition: number;
@@ -25,6 +25,8 @@ const { name, maxNutrition } = defineProps<{
 					</p>
 					<progress
 						class="progress progress-accent w-56 bg-primary"
+						:value="progressNutrition"
+						:max="maxNutrition"
 						v-if="maxNutrition !== 0"
 					>
 						50
