@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref, watch, onMounted } from 'vue';
+import axiosRetry from 'axios-retry';
 import axios from 'axios';
 import { HistoryResponse, Response } from '../types/Nutrition';
 
@@ -8,6 +9,7 @@ const userId: string = '81d7c4d5-1309-476b-b522-bd96feaba2fe';
 const page = ref<number>(1);
 const limit = 4;
 
+axiosRetry(axios, { retries: 3 });
 const fetchData = async () => {
 	const { data } = await axios.get<Response<HistoryResponse[]>>(
 		`http://localhost:9000/history/${userId}`,

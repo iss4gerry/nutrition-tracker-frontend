@@ -5,6 +5,7 @@ import axios from 'axios';
 
 const selectedImage = ref<string | null>(null);
 const imageForRequest = ref<File | null>(null);
+const loading = ref<boolean>(false);
 const foodNutrition = ref<FoodResponse<ProgressNutrition>>();
 
 const handleFileInput = (event: Event) => {
@@ -45,6 +46,7 @@ function fileToBase64(file: File | Blob | null): Promise<string> {
 
 const analyzeFood = async (event: any) => {
 	event.preventDefault();
+	loading.value = true;
 	const imageBase64 = await fileToBase64(imageForRequest.value);
 	const data = {
 		base64Image: imageBase64,
@@ -56,6 +58,9 @@ const analyzeFood = async (event: any) => {
 		data
 	);
 
+	if (response.data.status === 200) {
+		loading.value = false;
+	}
 	foodNutrition.value = response.data.data;
 };
 </script>
@@ -81,7 +86,7 @@ const analyzeFood = async (event: any) => {
 			Food information
 		</p>
 		<div
-			v-if="selectedImage && foodNutrition === undefined"
+			v-if="selectedImage && foodNutrition === undefined && loading === false"
 			class="w-full h-[35vh] bg-gray-200 rounded-lg overflow-hidden shadow-md"
 		>
 			<img
@@ -90,6 +95,7 @@ const analyzeFood = async (event: any) => {
 				class="w-full h-full object-cover"
 			/>
 		</div>
+
 		<div
 			v-else-if="foodNutrition"
 			class="w-full h-[35vh] rounded-lg items-center flex flex-col"
@@ -151,6 +157,10 @@ const analyzeFood = async (event: any) => {
 			</div>
 			<p class="mt-1">-`♡´-</p>
 		</div>
+		<span
+			class="loading loading-dots loading-lg flex items-center justify-center h-[35vh]"
+			v-else-if="loading"
+		></span>
 		<p v-else class="flex items-center justify-center text-gray-500 h-[35vh]">
 			No image selected
 		</p>
