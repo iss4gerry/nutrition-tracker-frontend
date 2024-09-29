@@ -1,10 +1,88 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { ref, watch } from 'vue';
+import axios from 'axios';
+import axiosRetry from 'axios-retry';
+import { Response, LoginResponse } from '../types/Nutrition';
+
+axiosRetry(axios, { retries: 3 });
+const loginRequest = ref<boolean>(false);
+const email = ref<string>();
+const password = ref<string>();
+const userInfo = ref<LoginResponse>();
+const wrongPassword = ref<boolean>(false);
+const alertStatus = ref<boolean>(false);
+
+watch(wrongPassword, () => {
+	setTimeout(() => {
+		setTimeout(() => {
+			wrongPassword.value = false;
+			alertStatus.value = false;
+		}, 1000);
+		alertStatus.value = true;
+	}, 4000);
+});
+
+const loginButton = async () => {
+	try {
+		loginRequest.value = true;
+		const res = await axios.post<Response<LoginResponse>>(
+			`http://localhost:9000/auth/login`,
+			{
+				email: String(email.value),
+				password: String(password.value),
+			},
+			{
+				headers: {
+					'Content-Type': 'application/json',
+				},
+			}
+		);
+		userInfo.value = res.data.data;
+		console.log(userInfo.value);
+	} catch (error: any) {
+		loginRequest.value = false;
+		if (error.response) {
+			const { status } = error.response.data;
+			if (status === 401) {
+				wrongPassword.value = true;
+			} else {
+				console.log('Internal server error please try again');
+			}
+		} else if (error instanceof Error) {
+			console.error('Error message:', error.message);
+		} else {
+			console.error('Unknown error:', error);
+		}
+	}
+};
+</script>
 
 <template>
 	<div
 		class="flex justify-center items-center w-min-screen max-sm:w-[44vh] h-[80vh] -mt-10"
 	>
 		<div class="card text-primary-content h-[50vh]">
+			<div
+				role="alert"
+				class="animate__animated animate__fadeInDown alert alert-error absolute -mt-5"
+				:class="{ 'animate__fadeOutUp animate__delay-s': alertStatus }"
+				v-if="wrongPassword"
+			>
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					class="h-6 w-6 shrink-0 stroke-current"
+					fill="none"
+					viewBox="0 0 24 24"
+				>
+					<path
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						stroke-width="2"
+						d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+					/>
+				</svg>
+				<span>Error! Invalid email or password.</span>
+			</div>
 			<div class="card-body max-sm:w-[44vh] backdrop-blur-sm mt-10">
 				<div class="flex flex-col justify-center items-center space-y-4 w-full">
 					<h2 class="text-2xl font-semibold">Login</h2>
@@ -22,7 +100,12 @@
 								d="M15 6.954 8.978 9.86a2.25 2.25 0 0 1-1.956 0L1 6.954V11.5A1.5 1.5 0 0 0 2.5 13h11a1.5 1.5 0 0 0 1.5-1.5V6.954Z"
 							/>
 						</svg>
-						<input type="text" class="grow w-[25vh]" placeholder="Email" />
+						<input
+							type="text"
+							class="grow w-[25vh]"
+							placeholder="Email"
+							v-model="email"
+						/>
 					</label>
 					<label class="input input-bordered flex items-center gap-2">
 						<svg
@@ -41,9 +124,23 @@
 							type="password"
 							class="grow w-[25vh]"
 							placeholder="Password"
+							v-model="password"
 						/>
 					</label>
-					<button class="btn w-[31vh] bg-accent text-gray-50">Login</button>
+					<button
+						class="btn w-[31vh] bg-accent text-gray-50"
+						:disabled="loginRequest"
+						@click="loginButton"
+					>
+						<p v-if="!loginRequest">Login</p>
+						<div
+							class="flex flex-row justify-center items-center"
+							v-if="loginRequest"
+						>
+							<span class="loading loading-spinner mr-1 -ml-2"></span>
+							Loading
+						</div>
+					</button>
 					<div class="flex flex-row w-[30vh] justify-between">
 						<div class="flex flex-row justify-center items-center">
 							<input type="checkbox" class="checkbox w-3 h-3 mr-1" />

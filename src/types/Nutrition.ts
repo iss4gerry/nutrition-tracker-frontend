@@ -53,3 +53,14 @@ export type Pagination = {
 	totalItems: number;
 	totalPage: number;
 };
+
+export type LoginResponse = {
+	id: string;
+	name: string;
+	email: string;
+	password: string;
+	role: string;
+	createdAt: string;
+	updatedAt: string;
+	isEmailVerified: boolean;
+};
