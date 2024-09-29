@@ -11,7 +11,7 @@ import FoodHistory from './FoodHistory.vue';
 		</p>
 		<div class="divider -mb-1"></div>
 		<div class="card flex flex-col">
-			<FoodHistory></FoodHistory>
+			<FoodHistory ref="historyView"></FoodHistory>
 		</div>
 	</div>
 </template>

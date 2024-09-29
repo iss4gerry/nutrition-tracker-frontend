@@ -9,7 +9,7 @@ const loginStatus = ref<boolean>(true);
 
 <template>
 	<main>
-		<div class="bg-secondary">
+		<div class="bg-secondary" id="Home">
 			<Navbar v-if="loginStatus"></Navbar>
 			<div
 				class="bg-gradient-to-t from-primary to-secondary min-h-screen flex-col -mt-11 md:mt-10"
@@ -26,7 +26,7 @@ const loginStatus = ref<boolean>(true);
 					<Faq></Faq>
 				</div>
 				<div class="divider"></div>
-				<Footer></Footer>
+				<Footer id="Faq"></Footer>
 			</div>
 		</div>
 	</main>

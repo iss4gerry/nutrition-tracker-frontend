@@ -41,9 +41,9 @@
 		</div>
 		<div class="navbar-center hidden lg:flex">
 			<ul class="menu menu-horizontal px-1">
-				<li><a>Home</a></li>
-				<li><a>History</a></li>
-				<li><a>Faq</a></li>
+				<li><router-link to="#Home">Home</router-link></li>
+				<li><router-link to="#History">History</router-link></li>
+				<li><router-link to="#Faq">Faq</router-link></li>
 			</ul>
 		</div>
 		<div class="navbar-end mr-5 max-sm:hidden">

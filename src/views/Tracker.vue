@@ -48,7 +48,6 @@ onMounted(async () => {
 const getProgress = (data: ProgressNutrition) => {
 	progressNutrition.value = data;
 };
-
 </script>
 
 <template>
@@ -111,7 +110,7 @@ const getProgress = (data: ProgressNutrition) => {
 		class="container mx-auto flex flex-col md:flex-row justify-center space-x-0 md:space-x-0 space-y-45 md:space-y-0 md:mt-20 -mt-10"
 	>
 		<div class="card text-neutral-content w-full md:w-[105vh] -mt-3 md:mt-0">
-			<div class="card-body items-center text-center">
+			<div id="History" class="card-body items-center text-center">
 				<History></History>
 			</div>
 		</div>

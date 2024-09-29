@@ -1,9 +1,12 @@
 @tailwind base;
 
 @layer base {
-    main {
-        @apply text-accent;
-    }
+	main {
+		@apply text-accent;
+	}
+	html {
+		scroll-behavior: smooth;
+	}
 }
 
 @tailwind components;

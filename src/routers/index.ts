@@ -24,4 +24,16 @@ const routes = [
 export const router = createRouter({
 	history: createWebHistory(),
 	routes,
+	scrollBehavior(to, from, savedPosition) {
+		if (to.hash) {
+			return {
+				el: to.hash, // Scroll ke elemen yang sesuai dengan ID hash
+				behavior: 'smooth', // Opsi animasi scroll
+			};
+		} else if (savedPosition) {
+			return savedPosition;
+		} else {
+			return { top: 0 };
+		}
+	},
 });
