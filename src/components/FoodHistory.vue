@@ -2,16 +2,17 @@
 import { ref, watch, onMounted } from 'vue';
 import axiosRetry from 'axios-retry';
 import axios from 'axios';
-import { HistoryResponse, Response } from '../types/Nutrition';
+import { HistoryResponse, Response, Pagination } from '../types/Nutrition';
 
 const food = ref<HistoryResponse[]>([]);
+const pagination = ref<Pagination>();
 const userId: string = '81d7c4d5-1309-476b-b522-bd96feaba2fe';
 const page = ref<number>(1);
 const limit = 4;
 
 axiosRetry(axios, { retries: 3 });
 const fetchData = async () => {
-	const { data } = await axios.get<Response<HistoryResponse[]>>(
+	const { data } = await axios.get<Response<HistoryResponse[], Pagination>>(
 		`http://localhost:9000/history/${userId}`,
 		{
 			params: {
@@ -22,6 +23,7 @@ const fetchData = async () => {
 	);
 
 	food.value = data.data;
+	pagination.value = data.pagination;
 };
 
 watch(page, async () => {
@@ -39,7 +41,7 @@ const prevPage = () => {
 };
 
 const nextPage = () => {
-	if (page.value < 10) {
+	if (pagination.value && page.value <= pagination.value.totalPage - 1) {
 		page.value++;
 	}
 };

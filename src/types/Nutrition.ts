@@ -1,7 +1,8 @@
-export type Response<T> = {
+export type Response<T, P> = {
 	status: number;
 	message: string;
 	data: T;
+	pagination?: P;
 };
 
 export type NutritionResponse = {
@@ -44,4 +45,11 @@ export type HistoryResponse = {
 	totalFat: number;
 	totalProtein: number;
 	date: Date;
+};
+
+export type Pagination = {
+	currentPage: number;
+	pageSize: number;
+	totalItems: number;
+	totalPage: number;
 };

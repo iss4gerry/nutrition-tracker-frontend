@@ -48,6 +48,7 @@ onMounted(async () => {
 const getProgress = (data: ProgressNutrition) => {
 	progressNutrition.value = data;
 };
+
 </script>
 
 <template>
