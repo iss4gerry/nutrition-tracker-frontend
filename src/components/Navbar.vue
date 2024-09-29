@@ -24,9 +24,9 @@
 					tabindex="0"
 					class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
 				>
-					<li><a>Home</a></li>
-					<li><a>History</a></li>
-					<li><a>Faq</a></li>
+					<li><router-link to="#Home">Home</router-link></li>
+					<li><router-link to="#History">History</router-link></li>
+					<li><router-link to="#Faq">Faq</router-link></li>
 					<li>
 						<a>Account</a>
 						<ul class="p-2">
