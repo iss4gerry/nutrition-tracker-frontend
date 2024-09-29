@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import FoodInfo from '../components/FoodInfo.vue';
 import { Response, FoodResponse, ProgressNutrition } from '../types/Nutrition';
 import { ref } from 'vue';
 import axios from 'axios';
@@ -84,9 +85,6 @@ const analyzeFood = async (event: any) => {
 		>
 			Preview
 		</p>
-		<p class="text-xl font-bold text-gray-700" v-else-if="foodNutrition">
-			Food information
-		</p>
 		<div
 			v-if="selectedImage && foodNutrition === undefined && loading === false"
 			class="w-full h-[35vh] bg-gray-200 rounded-lg overflow-hidden shadow-md"
@@ -98,67 +96,10 @@ const analyzeFood = async (event: any) => {
 			/>
 		</div>
 
-		<div
-			v-else-if="foodNutrition"
-			class="w-full h-[35vh] rounded-lg items-center flex flex-col"
-		>
-			<p class="text-lg md:hidden">𓎦</p>
-			<h1 class="text-xl font-semibold mt-4">
-				{{ foodNutrition.foodInfo.foodName }}
-			</h1>
-			<div class="mt-4">
-				<p>{{ foodNutrition.foodInfo.foodInformation }}</p>
-			</div>
-			<div class="divider mt-8 text-sm">Nutrition</div>
-			<div class="flex flex-row space-x-1 -mt-2">
-				<div
-					class="bg-primary p-2 w-[7vh] h-[9vh] rounded-xl mb-3 flex flex-col mt-3"
-				>
-					<p>🔥</p>
-					<h1 class="text-sm font-semibold">
-						{{ foodNutrition.foodInfo.calorie }}
-					</h1>
-					<p class="text-sm">Calorie</p>
-				</div>
-				<div
-					class="bg-primary p-2 w-[7vh] h-[9vh] rounded-xl mb-3 flex flex-col mt-3"
-				>
-					<p>🥔</p>
-					<h1 class="text-sm font-semibold">
-						{{ foodNutrition.foodInfo.carbohydrate }}
-					</h1>
-					<p class="text-sm">Carbo</p>
-				</div>
-				<div
-					class="bg-primary p-2 w-[7vh] h-[9vh] rounded-xl mb-3 flex flex-col mt-3"
-				>
-					<p>💪</p>
-					<h1 class="text-sm font-semibold">
-						{{ foodNutrition.foodInfo.protein }}
-					</h1>
-					<p class="text-sm">Protein</p>
-				</div>
-				<div
-					class="bg-primary p-2 w-[7vh] h-[9vh] rounded-xl mb-3 flex flex-col mt-3"
-				>
-					<p>🍚</p>
-					<h1 class="text-sm font-semibold">
-						{{ foodNutrition.foodInfo.sugar }}
-					</h1>
-					<p class="text-sm">Sugar</p>
-				</div>
-				<div
-					class="bg-primary p-2 w-[7vh] h-[9vh] rounded-xl mb-3 flex flex-col mt-3"
-				>
-					<p>🥓</p>
-					<h1 class="text-sm font-semibold">
-						{{ foodNutrition.foodInfo.fat }}
-					</h1>
-					<p class="text-sm">Fat</p>
-				</div>
-			</div>
-			<p class="mt-1">-`♡´-</p>
+		<div v-else-if="foodNutrition">
+			<FoodInfo :food-nutrition="foodNutrition"></FoodInfo>
 		</div>
+
 		<span
 			class="loading loading-dots loading-lg flex items-center justify-center h-[35vh]"
 			v-else-if="loading"

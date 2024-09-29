@@ -1,4 +1,4 @@
-export type Response<T, P> = {
+export type Response<T, P = undefined> = {
 	status: number;
 	message: string;
 	data: T;
