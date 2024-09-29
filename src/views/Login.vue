@@ -2,7 +2,7 @@
 
 <template>
 	<div
-		class="flex justify-center items-center w-screen max-sm:w-[44vh] h-[80vh] -mt-10"
+		class="flex justify-center items-center w-min-screen max-sm:w-[44vh] h-[80vh] -mt-10"
 	>
 		<div class="card text-primary-content h-[50vh]">
 			<div class="card-body max-sm:w-[44vh] backdrop-blur-sm mt-10">
