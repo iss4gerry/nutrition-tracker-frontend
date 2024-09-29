@@ -8,7 +8,7 @@ const { name, maxNutrition, progressNutrition } = defineProps<{
 
 <template>
 	<div
-		class="card text-neutral-content w-full bg-gray-50 rounded-lg shadow-inner py-[-30px]"
+		class="animate__animated animate__flipInY card text-neutral-content w-full bg-gray-50 rounded-lg shadow-inner py-[-30px]"
 	>
 		<div class="card-body items-center text-center space-y-1">
 			<div class="flex flex-col items-center space-x-15 -mt-5 -mb-3">
@@ -24,13 +24,12 @@ const { name, maxNutrition, progressNutrition } = defineProps<{
 						{{ maxNutrition }}
 					</p>
 					<progress
-						class="progress progress-accent w-56 bg-primary"
+						class="progress progress-accent w-56 bg-primary transition ease-in-out duration-75"
 						:value="progressNutrition"
 						:max="maxNutrition"
 						v-if="maxNutrition !== 0"
-					>
-						50
-					</progress>
+						id="nutrition-progress"
+					></progress>
 				</div>
 			</div>
 		</div>

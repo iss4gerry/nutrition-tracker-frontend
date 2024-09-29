@@ -2,7 +2,7 @@
 
 <template>
 	<div
-		class="container mx-auto flex flex-col items-center space-y-4 p-4 bg-gray-50 rounded-xl shadow-inner max-w-md min-h-[65vh] max-sm:min-h-[70vh]"
+		class="animate__animated animate__flipInY container mx-auto flex flex-col items-center space-y-4 p-4 bg-gray-50 rounded-xl shadow-inner max-w-md min-h-[65vh] max-sm:min-h-[70vh]"
 	>
 		<div class="flex flex-col -mb-8">
 			<p class="text-xl font-bold text-accent -mb-3">Food idea</p>

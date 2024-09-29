@@ -2,7 +2,7 @@
 
 <template>
 	<div
-		class="container mx-auto flex flex-col items-center space-y-4 p-4 bg-gray-50 rounded-xl shadow-inner max-w-md h-[31vh]"
+		class="animate__animated animate__flipInY container mx-auto flex flex-col items-center space-y-4 p-4 bg-gray-50 rounded-xl shadow-inner max-w-md h-[31vh]"
 	>
 		<div class="flex flex-col">
 			<p class="text-lg font-semibold text-accent">Input your food name</p>
