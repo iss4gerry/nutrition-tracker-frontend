@@ -48,7 +48,7 @@ const nextPage = () => {
 </script>
 
 <template>
-	<div class="min-h-[80vh] flex flex-col items-center max-sm:w-[40vh]">
+	<div class="min-h-[80vh] flex flex-col items-center max-sm:w-[40vh] mt-5">
 		<div class="card-container" v-if="food">
 			<div
 				class="card-body m-2 md:mt-5 md:mb-5 bg-slate-50 rounded-2xl p-6 max-h-[130px] md:max-h-[140px]"
@@ -71,7 +71,7 @@ const nextPage = () => {
 			You have no history yet
 		</p>
 
-		<div class="join mt-auto">
+		<div class="join mt-4">
 			<button class="join-item btn" @click="prevPage">«</button>
 			<button class="join-item btn">{{ page }}</button>
 			<button class="join-item btn" @click="nextPage">»</button>
