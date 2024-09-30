@@ -1,14 +1,17 @@
-import { createRouter, createWebHistory } from 'vue-router';
+import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 import Tracker from '../views/Tracker.vue';
 import Login from '../views/Login.vue';
 import Register from '../views/Register.vue';
 import Profile from '../views/Profile.vue';
 
-const routes = [
+const routes: Array<RouteRecordRaw> = [
 	{
 		path: '/',
 		name: 'home',
 		component: Tracker,
+		meta: {
+			requiresAuth: true,
+		},
 	},
 	{
 		path: '/login',
@@ -33,8 +36,8 @@ export const router = createRouter({
 	scrollBehavior(to, _from, savedPosition) {
 		if (to.hash) {
 			return {
-				el: to.hash, // Scroll ke elemen yang sesuai dengan ID hash
-				behavior: 'smooth', // Opsi animasi scroll
+				el: to.hash,
+				behavior: 'smooth',
 			};
 		} else if (savedPosition) {
 			return savedPosition;
@@ -42,4 +45,17 @@ export const router = createRouter({
 			return { top: 0 };
 		}
 	},
+});
+
+router.beforeEach((to, _from, next) => {
+	const isAuthenticated = localStorage.getItem('token');
+	if (to.matched.some((record) => record.meta.requiresAuth)) {
+		if (!isAuthenticated) {
+			next('/login');
+		} else {
+			next();
+		}
+	} else {
+		next();
+	}
 });
