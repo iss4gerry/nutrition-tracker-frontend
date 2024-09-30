@@ -117,5 +117,15 @@ const analyzeFood = async (event: any) => {
 				Analyze
 			</button>
 		</div>
+		<div class="h-[5vh] invisible absolute">
+			<button
+				class="btn btn-wide bg-primary"
+				v-if="foodNutrition === undefined"
+				@click="analyzeFood"
+				:disabled="!selectedImage"
+			>
+				Analyze
+			</button>
+		</div>
 	</div>
 </template>
