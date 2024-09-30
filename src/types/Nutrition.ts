@@ -81,3 +81,19 @@ export type FoodIdea = {
 	fat: string;
 	protein: string;
 };
+
+export type ProfileResponse = {
+	id: string;
+	userid: string;
+	gender: string;
+	dateOfBirth: Date;
+	allergies: string;
+	weight: number;
+	height: number;
+	createdAt: Date;
+	updatedAt: Date;
+	user: {
+		name: string;
+		email: string;
+	};
+};

@@ -2,7 +2,8 @@
 import { ref, watch } from 'vue';
 import axios from 'axios';
 import axiosRetry from 'axios-retry';
-import { Response, LoginResponse } from '../types/Nutrition';
+import { Response, LoginResponse, ProfileResponse } from '../types/Nutrition';
+import { useRouter } from 'vue-router';
 
 axiosRetry(axios, { retries: 3 });
 const loginRequest = ref<boolean>(false);
@@ -11,6 +12,8 @@ const password = ref<string>();
 const userInfo = ref<LoginResponse>();
 const wrongPassword = ref<boolean>(false);
 const alertStatus = ref<boolean>(false);
+const userId = ref<string>();
+const router = useRouter();
 
 watch(wrongPassword, () => {
 	setTimeout(() => {
@@ -37,8 +40,32 @@ const loginButton = async () => {
 				},
 			}
 		);
+		loginRequest.value = false;
 		userInfo.value = res.data.data;
-		console.log(userInfo.value);
+		userId.value = res.data.data.id;
+		const token = res.headers['authorization'];
+		if (token) {
+			const bearerToken = token.split(' ')[1];
+
+			localStorage.setItem('token', bearerToken);
+
+			try {
+				const { data } = await axios.get<Response<ProfileResponse>>(
+					`http://localhost:9000/profile/${userId.value}`
+				);
+
+				if (data.data) {
+					router.push('home');
+				}
+			} catch (error: any) {
+				if (error.response) {
+					const { message } = error.response.data;
+					if (message === 'User not found') {
+						console.log(message);
+					}
+				}
+			}
+		}
 	} catch (error: any) {
 		loginRequest.value = false;
 		if (error.response) {
