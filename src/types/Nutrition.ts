@@ -64,3 +64,20 @@ export type LoginResponse = {
 	updatedAt: string;
 	isEmailVerified: boolean;
 };
+
+export type FoodIdeaResponse<T> = {
+	food1: T;
+	food2: T;
+	food3: T;
+	food4: T;
+};
+
+export type FoodIdea = {
+	foodName: string;
+	information: string;
+	calorie: string;
+	sugar: string;
+	carbohydrate: string;
+	fat: string;
+	protein: string;
+};
