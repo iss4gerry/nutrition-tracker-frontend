@@ -97,3 +97,38 @@ export type ProfileResponse = {
 		email: string;
 	};
 };
+
+export interface Profile {
+	id: string;
+	userId: string;
+	gender: string;
+	dateOfBirth: string;
+	allergies: string;
+	weight: number;
+	height: number;
+	createdAt: string;
+	updatedAt: string;
+}
+
+export interface DailyNutrition {
+	id: string;
+	userId: string;
+	dailyCalorie: number;
+	dailyCarbohydrate: number;
+	dailySugar: number;
+	dailyFat: number;
+	dailyProtein: number;
+	createdAt: string;
+	updatedAt: string;
+}
+
+export interface CreateProfileData {
+	profile: Profile;
+	dailyNutrition: DailyNutrition;
+}
+
+export interface CreateProfileResponse {
+	status: number;
+	message: string;
+	data: CreateProfileData;
+}

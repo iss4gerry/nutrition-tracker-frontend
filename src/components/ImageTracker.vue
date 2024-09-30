@@ -52,7 +52,7 @@ const analyzeFood = async (event: any) => {
 	const imageBase64 = await fileToBase64(imageForRequest.value);
 	const data = {
 		base64Image: imageBase64,
-		userId: '81d7c4d5-1309-476b-b522-bd96feaba2fe',
+		userId: localStorage.getItem('userId'),
 	};
 
 	const response = await axios.post<Response<FoodResponse<ProgressNutrition>>>(
@@ -112,6 +112,7 @@ const analyzeFood = async (event: any) => {
 				class="btn btn-wide bg-primary"
 				v-if="foodNutrition === undefined"
 				@click="analyzeFood"
+				:disabled="!selectedImage"
 			>
 				Analyze
 			</button>

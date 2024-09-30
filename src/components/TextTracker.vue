@@ -17,7 +17,7 @@ const analyzeFood = async (e: Event) => {
 		foodNutrition.value = undefined;
 		loading.value = true;
 		const data = {
-			userId: '81d7c4d5-1309-476b-b522-bd96feaba2fe',
+			userId: localStorage.getItem('userId'),
 			foodName: foodName.value,
 		};
 

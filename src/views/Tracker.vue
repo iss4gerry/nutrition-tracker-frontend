@@ -22,7 +22,7 @@ const getStatus = (activeTab: string) => {
 
 const dailyNutrition = ref<NutritionResponse>();
 const progressNutrition = ref<ProgressNutrition>();
-const userId: string = '81d7c4d5-1309-476b-b522-bd96feaba2fe';
+const userId = localStorage.getItem('userId');
 
 const requestNutrition = async () => {
 	return await axios.get<Response<NutritionResponse>>(

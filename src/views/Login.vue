@@ -40,7 +40,6 @@ const loginButton = async () => {
 				},
 			}
 		);
-		loginRequest.value = false;
 		userInfo.value = res.data.data;
 		userId.value = res.data.data.id;
 		const token = res.headers['authorization'];
@@ -48,6 +47,7 @@ const loginButton = async () => {
 			const bearerToken = token.split(' ')[1];
 
 			localStorage.setItem('token', bearerToken);
+			localStorage.setItem('userId', userId.value);
 
 			try {
 				const { data } = await axios.get<Response<ProfileResponse>>(
@@ -61,13 +61,12 @@ const loginButton = async () => {
 				if (error.response) {
 					const { message } = error.response.data;
 					if (message === 'User not found') {
-						console.log(message);
+						router.push('profile');
 					}
 				}
 			}
 		}
 	} catch (error: any) {
-		loginRequest.value = false;
 		if (error.response) {
 			const { status } = error.response.data;
 			if (status === 401) {
@@ -80,6 +79,8 @@ const loginButton = async () => {
 		} else {
 			console.error('Unknown error:', error);
 		}
+	} finally {
+		loginRequest.value = false;
 	}
 };
 </script>

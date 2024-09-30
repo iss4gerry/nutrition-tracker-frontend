@@ -8,7 +8,7 @@ const foodIdea = ref<FoodIdeaResponse<FoodIdea>>();
 axiosRetry(axios, { retries: 3 });
 
 const fetchData = async () => {
-	const userId = '81d7c4d5-1309-476b-b522-bd96feaba2fe';
+	const userId = localStorage.getItem('userId');
 	const res = await axios.get<Response<FoodIdeaResponse<FoodIdea>>>(
 		`http://localhost:9000/food/recommendation/${userId}`
 	);

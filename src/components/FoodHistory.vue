@@ -6,7 +6,7 @@ import { HistoryResponse, Response, Pagination } from '../types/Nutrition';
 
 const food = ref<HistoryResponse[]>([]);
 const pagination = ref<Pagination>();
-const userId: string = '81d7c4d5-1309-476b-b522-bd96feaba2fe';
+const userId = localStorage.getItem('userId');
 const page = ref<number>(1);
 const limit = 4;
 

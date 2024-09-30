@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import Tracker from '../views/Tracker.vue';
 import Login from '../views/Login.vue';
 import Register from '../views/Register.vue';
+import Profile from '../views/Profile.vue';
 
 const routes = [
 	{
@@ -18,6 +19,11 @@ const routes = [
 		path: '/register',
 		name: 'register',
 		component: Register,
+	},
+	{
+		path: '/profile/create',
+		name: 'createProfile',
+		component: Profile,
 	},
 ];
 
