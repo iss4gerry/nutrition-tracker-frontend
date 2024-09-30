@@ -61,7 +61,7 @@ const loginButton = async () => {
 				if (error.response) {
 					const { message } = error.response.data;
 					if (message === 'User not found') {
-						router.push('profile');
+						router.push('profile/create');
 					}
 				}
 			}

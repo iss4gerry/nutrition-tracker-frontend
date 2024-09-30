@@ -3,8 +3,17 @@ import { ref } from 'vue';
 import Navbar from './components/Navbar.vue';
 import Footer from './components/Footer.vue';
 import Faq from './components/Faq.vue';
+import { onMounted } from 'vue';
 
-const loginStatus = ref<boolean>(true);
+const loginStatus = ref<boolean>();
+const checkAuth = () => {
+	const token = localStorage.getItem('token');
+	loginStatus.value = !!token;
+};
+
+onMounted(() => {
+	checkAuth();
+});
 </script>
 
 <template>

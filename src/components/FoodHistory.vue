@@ -49,7 +49,7 @@ const nextPage = () => {
 
 <template>
 	<div class="min-h-[80vh] flex flex-col items-center max-sm:w-[40vh] mt-5">
-		<div class="card-container min-h-[66vh]" v-if="food">
+		<div class="card-container min-h-[66vh]" v-if="food.length > 0">
 			<div
 				class="card-body m-2 md:mt-5 md:mb-5 bg-slate-50 rounded-2xl p-6 max-h-[130px] md:max-h-[140px]"
 				v-for="(data, index) in food"

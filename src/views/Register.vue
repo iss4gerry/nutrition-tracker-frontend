@@ -1,4 +1,56 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { Response, LoginResponse } from '../types/Nutrition';
+import axios from 'axios';
+import axiosRetry from 'axios-retry';
+import { ref, watch } from 'vue';
+import { useRouter } from 'vue-router';
+
+axiosRetry(axios, { retries: 3 });
+const email = ref<string>();
+const username = ref<string>();
+const password = ref<string>();
+const wrongPassword = ref<boolean>(false);
+const alertStatus = ref<boolean>(false);
+
+const router = useRouter();
+
+watch(wrongPassword, () => {
+	setTimeout(() => {
+		setTimeout(() => {
+			wrongPassword.value = false;
+			alertStatus.value = false;
+		}, 1000);
+		alertStatus.value = true;
+	}, 4000);
+});
+
+const register = async () => {
+	if (email.value && username.value && password.value) {
+		try {
+			const { data } = await axios.post<Response<LoginResponse>>(
+				`http://localhost:9000/auth/register`,
+				{
+					email: email.value,
+					name: username.value,
+					password: password.value,
+				}
+			);
+
+			if (data.status === 200) {
+				router.push('/login');
+			} else {
+				console.log(data.message);
+			}
+		} catch (error) {
+			if (error instanceof Error) {
+				console.log(error.message);
+			}
+		}
+	}
+
+	wrongPassword.value = true;
+};
+</script>
 
 <template>
 	<div
@@ -7,6 +59,29 @@
 		<div class="card text-primary-content h-[50vh]">
 			<div class="card-body max-sm:w-[44vh] backdrop-blur-sm mt-10">
 				<div class="flex flex-col justify-center items-center space-y-4 w-full">
+					<div class="flex flex-col items-center justify-center">
+						<div
+							role="alert"
+							class="animate__animated animate__fadeInDown alert alert-error absolute -mt-20"
+							:class="{ 'animate__fadeOutUp animate__delay-s': alertStatus }"
+							v-if="wrongPassword"
+						>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								class="h-6 w-6 shrink-0 stroke-current"
+								fill="none"
+								viewBox="0 0 24 24"
+							>
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									stroke-width="2"
+									d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+								/>
+							</svg>
+							<span>Please fill all field</span>
+						</div>
+					</div>
 					<h2 class="text-2xl font-semibold">Register</h2>
 					<label class="input input-bordered flex items-center gap-2">
 						<svg
@@ -22,7 +97,12 @@
 								d="M15 6.954 8.978 9.86a2.25 2.25 0 0 1-1.956 0L1 6.954V11.5A1.5 1.5 0 0 0 2.5 13h11a1.5 1.5 0 0 0 1.5-1.5V6.954Z"
 							/>
 						</svg>
-						<input type="text" class="grow w-[25vh]" placeholder="Email" />
+						<input
+							type="text"
+							class="grow w-[25vh]"
+							placeholder="Email"
+							v-model="email"
+						/>
 					</label>
 					<label class="input input-bordered flex items-center gap-2">
 						<svg
@@ -35,7 +115,12 @@
 								d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM12.735 14c.618 0 1.093-.561.872-1.139a6.002 6.002 0 0 0-11.215 0c-.22.578.254 1.139.872 1.139h9.47Z"
 							/>
 						</svg>
-						<input type="text" class="grow w-[25vh]" placeholder="Username" />
+						<input
+							type="text"
+							class="grow w-[25vh]"
+							placeholder="Username"
+							v-model="username"
+						/>
 					</label>
 					<label class="input input-bordered flex items-center gap-2">
 						<svg
@@ -54,9 +139,12 @@
 							type="password"
 							class="grow w-[25vh]"
 							placeholder="Password"
+							v-model="password"
 						/>
 					</label>
-					<button class="btn w-[31vh] bg-accent text-gray-50">Register</button>
+					<button class="btn w-[31vh] bg-accent text-gray-50" @click="register">
+						Register
+					</button>
 					<div class="flex flex-row items-center justify-center">
 						<p class="text-xs mr-1">Already have an account?</p>
 						<router-link to="login" class="text-xs font-semibold text-gray-500"
