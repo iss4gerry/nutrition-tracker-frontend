@@ -61,7 +61,10 @@ const getProgress = (data: ProgressNutrition) => {
 					v-if="active === 'image'"
 					@progress="getProgress"
 				></ImageTracker>
-				<TextTracker v-if="active === 'text'"></TextTracker>
+				<TextTracker
+					v-if="active === 'text'"
+					@progress="getProgress"
+				></TextTracker>
 				<FoodIdea v-if="active === 'idea'"></FoodIdea>
 			</div>
 		</div>

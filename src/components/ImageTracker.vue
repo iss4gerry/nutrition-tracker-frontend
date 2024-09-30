@@ -70,7 +70,7 @@ const analyzeFood = async (event: any) => {
 
 <template>
 	<div
-		class="animate__animated animate__flipInY container mx-auto flex flex-col items-center space-y-4 p-4 bg-gray-50 rounded-xl shadow-inner max-w-md animate_animated animate__flipInY"
+		class="animate__animated animate__flipInY container mx-auto flex flex-col items-center space-y-4 p-4 bg-gray-50 rounded-xl shadow-inner max-w-md animate_animated animate__flipInY min-h-[68vh] max-h-[68vh]"
 	>
 		<p class="text-lg font-semibold text-gray-700">Upload your food image</p>
 		<input
