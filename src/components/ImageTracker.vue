@@ -48,23 +48,30 @@ function fileToBase64(file: File | Blob | null): Promise<string> {
 
 const analyzeFood = async (event: any) => {
 	event.preventDefault();
-	loading.value = true;
-	const imageBase64 = await fileToBase64(imageForRequest.value);
-	const data = {
-		base64Image: imageBase64,
-		userId: localStorage.getItem('userId'),
-	};
+	try {
+		loading.value = true;
+		const imageBase64 = await fileToBase64(imageForRequest.value);
+		const data = {
+			base64Image: imageBase64,
+			userId: localStorage.getItem('userId'),
+		};
 
-	const response = await axios.post<Response<FoodResponse<ProgressNutrition>>>(
-		`http://localhost:9000/food/nutrition/image`,
-		data
-	);
+		const response = await axios.post<
+			Response<FoodResponse<ProgressNutrition>>
+		>(`http://localhost:9000/food/nutrition/image`, data);
 
-	if (response.data.status === 200) {
+		if (response.data.status === 200) {
+			loading.value = false;
+		}
+		foodNutrition.value = response.data.data;
+		emit('progress', response.data.data.progressNutrition);
+	} catch (error) {
+		if (error instanceof Error) {
+			console.log(error.message);
+		}
+	} finally {
 		loading.value = false;
 	}
-	foodNutrition.value = response.data.data;
-	emit('progress', response.data.data.progressNutrition);
 };
 </script>
 
