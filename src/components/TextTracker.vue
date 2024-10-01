@@ -32,7 +32,11 @@ const analyzeFood = async (e: Event) => {
 
 			emit('progress', response.data.data.progressNutrition);
 		}
-	} catch (error) {}
+	} catch (error) {
+		if (error instanceof Error) {
+			console.log(error.message);
+		}
+	}
 };
 </script>
 
