@@ -3,7 +3,9 @@ import FoodInfo from '../components/FoodInfo.vue';
 import { Response, FoodResponse, ProgressNutrition } from '../types/Nutrition';
 import { ref } from 'vue';
 import axios from 'axios';
+import axiosRetry from 'axios-retry';
 
+axiosRetry(axios, { retries: 3 });
 const selectedImage = ref<string | null>(null);
 const imageForRequest = ref<File | null>(null);
 const loading = ref<boolean>(false);
