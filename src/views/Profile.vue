@@ -54,10 +54,10 @@ const createProfile = async () => {
 			if (error instanceof Error) {
 				console.log(error.message);
 			}
+		} finally {
+			wrongPassword.value = true;
 		}
 	}
-
-	wrongPassword.value = true;
 };
 </script>
 
