@@ -143,47 +143,51 @@ const loginAsGuest = async () => {
 		class="flex justify-center items-center w-min-screen max-sm:w-[44vh] h-[80vh] -mt-10"
 	>
 		<div class="card text-primary-content h-[50vh]">
-			<div
-				role="alert"
-				class="animate__animated animate__fadeInDown alert alert-error absolute -mt-5"
-				:class="{ 'animate__fadeOutUp animate__delay-s': alertStatus }"
-				v-if="wrongPassword"
-			>
-				<svg
-					xmlns="http://www.w3.org/2000/svg"
-					class="h-6 w-6 shrink-0 stroke-current"
-					fill="none"
-					viewBox="0 0 24 24"
+			<div class="max-sm:flex max-sm:justify-center max-sm:items-center">
+				<div
+					role="alert"
+					class="animate__animated animate__fadeInDown alert alert-error absolute -mt-5 max-sm:-mt-5 max-sm:flex max-sm:flex-row max-sm:items-center max-sm:justify-center max-sm:w-[40vh]"
+					:class="{ 'animate__fadeOutUp animate__delay-s': alertStatus }"
+					v-if="wrongPassword"
 				>
-					<path
-						stroke-linecap="round"
-						stroke-linejoin="round"
-						stroke-width="2"
-						d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
-					/>
-				</svg>
-				<span>Error! Invalid email or password.</span>
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						class="h-6 w-6 shrink-0 stroke-current"
+						fill="none"
+						viewBox="0 0 24 24"
+					>
+						<path
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							stroke-width="2"
+							d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+						/>
+					</svg>
+					<span>Error! Invalid email or password.</span>
+				</div>
 			</div>
-			<div
-				role="alert"
-				class="animate__animated animate__fadeInDown alert alert-error absolute -mt-5"
-				:class="{ 'animate__fadeOutUp animate__delay-s': alertStatus }"
-				v-if="invalidField"
-			>
-				<svg
-					xmlns="http://www.w3.org/2000/svg"
-					class="h-6 w-6 shrink-0 stroke-current"
-					fill="none"
-					viewBox="0 0 24 24"
+			<div class="max-sm:flex max-sm:justify-center max-sm:items-center">
+				<div
+					role="alert"
+					class="animate__animated animate__fadeInDown alert alert-error absolute -mt-5 max-sm:-mt-5 max-sm:flex max-sm:flex-row max-sm:items-center max-sm:justify-center max-sm:w-[40vh]"
+					:class="{ 'animate__fadeOutUp animate__delay-s': alertStatus }"
+					v-if="invalidField"
 				>
-					<path
-						stroke-linecap="round"
-						stroke-linejoin="round"
-						stroke-width="2"
-						d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
-					/>
-				</svg>
-				<span>Error! Please fill all field.</span>
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						class="h-6 w-6 shrink-0 stroke-current"
+						fill="none"
+						viewBox="0 0 24 24"
+					>
+						<path
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							stroke-width="2"
+							d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+						/>
+					</svg>
+					<span>Error! Please fill all field.</span>
+				</div>
 			</div>
 			<div class="card-body max-sm:w-[44vh] backdrop-blur-sm mt-10">
 				<div class="flex flex-col justify-center items-center space-y-4 w-full">

@@ -67,7 +67,7 @@ const register = async () => {
 					<div class="flex flex-col items-center justify-center">
 						<div
 							role="alert"
-							class="animate__animated animate__fadeInDown alert alert-error absolute -mt-20"
+							class="animate__animated animate__fadeInDown alert alert-error absolute -mt-20 max-sm:-mt-16 max-sm:flex max-sm:flex-row max-sm:items-center max-sm:justify-center max-sm:w-[40vh]"
 							:class="{ 'animate__fadeOutUp animate__delay-s': alertStatus }"
 							v-if="wrongPassword"
 						>

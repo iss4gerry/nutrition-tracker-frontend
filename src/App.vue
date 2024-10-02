@@ -1,25 +1,13 @@
 <script setup lang="ts">
-import { ref } from 'vue';
 import Navbar from './components/Navbar.vue';
 import Footer from './components/Footer.vue';
 import Faq from './components/Faq.vue';
-import { onMounted } from 'vue';
-
-const loginStatus = ref<boolean>(false);
-const checkAuth = () => {
-	const token = localStorage.getItem('token');
-	loginStatus.value = !!token;
-};
-
-onMounted(() => {
-	checkAuth();
-});
 </script>
 
 <template>
 	<main>
 		<div class="bg-secondary" id="Home">
-			<Navbar v-if="loginStatus"></Navbar>
+			<Navbar v-if="$route.meta.requiresNavbar"></Navbar>
 			<div
 				class="bg-gradient-to-t from-primary to-secondary min-h-screen flex-col -mt-11 md:mt-10"
 			>

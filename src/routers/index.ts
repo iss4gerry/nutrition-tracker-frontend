@@ -11,6 +11,7 @@ const routes: Array<RouteRecordRaw> = [
 		component: Tracker,
 		meta: {
 			requiresAuth: true,
+			requiresNavbar: true,
 		},
 	},
 	{

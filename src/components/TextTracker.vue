@@ -60,26 +60,28 @@ const analyzeFood = async (e: Event) => {
 </script>
 
 <template>
-	<div
-		role="alert"
-		class="animate__animated animate__fadeInDown alert alert-error absolute -mt-12"
-		:class="{ 'animate__fadeOutUp animate__delay-s': alertStatus }"
-		v-if="wrongPassword"
-	>
-		<svg
-			xmlns="http://www.w3.org/2000/svg"
-			class="h-6 w-6 shrink-0 stroke-current"
-			fill="none"
-			viewBox="0 0 24 24"
+	<div class="max-sm:flex max-sm:justify-center max-sm:items-center">
+		<div
+			role="alert"
+			class="animate__animated animate__fadeInDown alert alert-error absolute -mt-12 max-sm:-mt-5 max-sm:flex max-sm:flex-row max-sm:items-center max-sm:justify-center max-sm:w-[40vh]"
+			:class="{ 'animate__fadeOutUp animate__delay-s': alertStatus }"
+			v-if="wrongPassword"
 		>
-			<path
-				stroke-linecap="round"
-				stroke-linejoin="round"
-				stroke-width="2"
-				d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
-			/>
-		</svg>
-		<span>Error! No Food Name Provided.</span>
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				class="h-6 w-6 shrink-0 stroke-current"
+				fill="none"
+				viewBox="0 0 24 24"
+			>
+				<path
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					stroke-width="2"
+					d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+				/>
+			</svg>
+			<span>Error! No Food Name Provided.</span>
+		</div>
 	</div>
 	<div
 		class="animate__animated animate__flipInY container mx-auto flex flex-col items-center space-y-4 p-4 bg-gray-50 rounded-xl shadow-inner max-w-md min-h-[68vh] max-h-[68vh]"
