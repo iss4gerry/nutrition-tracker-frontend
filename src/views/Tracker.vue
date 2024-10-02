@@ -13,7 +13,7 @@ import {
 	ProgressNutrition,
 } from '../types/Nutrition';
 import { onMounted } from 'vue';
-
+const baseUrl = import.meta.env.VITE_BACKEND_URL;
 const active = ref<string>('image');
 
 const getStatus = (activeTab: string) => {
@@ -26,13 +26,13 @@ const userId = localStorage.getItem('userId');
 
 const requestNutrition = async () => {
 	return await axios.get<Response<NutritionResponse>>(
-		`http://localhost:9000/profile/nutrition/${userId}`
+		`${baseUrl}/profile/nutrition/${userId}`
 	);
 };
 
 const requestProgress = async () => {
 	return await axios.get<Response<ProgressNutrition>>(
-		`http://localhost:9000/profile/nutrition/progress/${userId}`
+		`${baseUrl}/profile/nutrition/progress/${userId}`
 	);
 };
 

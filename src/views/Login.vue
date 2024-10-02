@@ -6,6 +6,7 @@ import { Response, LoginResponse, ProfileResponse } from '../types/Nutrition';
 import { useRouter } from 'vue-router';
 
 axiosRetry(axios, { retries: 3 });
+const baseUrl = import.meta.env.VITE_BACKEND_URL;
 const loginRequest = ref<boolean>(false);
 const loginGuestRequest = ref<boolean>(false);
 const invalidField = ref<boolean>(false);
@@ -45,7 +46,7 @@ const loginButton = async () => {
 	try {
 		loginRequest.value = true;
 		const res = await axios.post<Response<LoginResponse>>(
-			`http://localhost:9000/auth/login`,
+			`${baseUrl}/auth/login`,
 			{
 				email: String(email.value),
 				password: String(password.value),
@@ -67,7 +68,7 @@ const loginButton = async () => {
 
 			try {
 				const { data } = await axios.get<Response<ProfileResponse>>(
-					`http://localhost:9000/profile/${userId.value}`
+					`${baseUrl}/profile/${userId.value}`
 				);
 
 				if (data.data) {
@@ -109,7 +110,7 @@ const loginAsGuest = async () => {
 	try {
 		loginGuestRequest.value = true;
 		const res = await axios.post<Response<LoginResponse>>(
-			`http://localhost:9000/auth/register`,
+			`${baseUrl}/auth/register`,
 			{
 				email: generateRandomGuestName() + '@gmail.com',
 				name: generateRandomGuestName(),

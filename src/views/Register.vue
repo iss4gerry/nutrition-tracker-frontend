@@ -6,6 +6,7 @@ import { ref, watch } from 'vue';
 import { useRouter } from 'vue-router';
 
 axiosRetry(axios, { retries: 3 });
+const baseUrl = import.meta.env.VITE_BACKEND_URL;
 const email = ref<string>();
 const username = ref<string>();
 const password = ref<string>();
@@ -28,7 +29,7 @@ const register = async () => {
 	if (email.value && username.value && password.value) {
 		try {
 			const { data } = await axios.post<Response<LoginResponse>>(
-				`http://localhost:9000/auth/register`,
+				`${baseUrl}/auth/register`,
 				{
 					email: email.value,
 					name: username.value,

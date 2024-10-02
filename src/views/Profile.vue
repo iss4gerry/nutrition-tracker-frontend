@@ -6,6 +6,7 @@ import axiosRetry from 'axios-retry';
 import { useRouter } from 'vue-router';
 
 axiosRetry(axios, { retries: 3 });
+const baseUrl = import.meta.env.VITE_BACKEND_URL;
 const router = useRouter();
 const loginRequest = ref<boolean>(false);
 const userId = localStorage.getItem('userId');
@@ -34,7 +35,7 @@ const createProfile = async () => {
 			const dateBirth = `${year}/${month}/${day}`;
 
 			const { data } = await axios.post<CreateProfileResponse>(
-				`http://localhost:9000/profile`,
+				`${baseUrl}/profile`,
 				{
 					userId: userId,
 					gender: gender.value,
