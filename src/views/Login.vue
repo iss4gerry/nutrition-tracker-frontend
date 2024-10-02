@@ -7,6 +7,8 @@ import { useRouter } from 'vue-router';
 
 axiosRetry(axios, { retries: 3 });
 const loginRequest = ref<boolean>(false);
+const loginGuestRequest = ref<boolean>(false);
+const invalidField = ref<boolean>(false);
 const email = ref<string>();
 const password = ref<string>();
 const userInfo = ref<LoginResponse>();
@@ -25,7 +27,21 @@ watch(wrongPassword, () => {
 	}, 4000);
 });
 
+watch(invalidField, () => {
+	setTimeout(() => {
+		setTimeout(() => {
+			invalidField.value = false;
+			alertStatus.value = false;
+		}, 1000);
+		alertStatus.value = true;
+	}, 4000);
+});
+
 const loginButton = async () => {
+	if (!email.value && !password.value) {
+		invalidField.value = true;
+		return;
+	}
 	try {
 		loginRequest.value = true;
 		const res = await axios.post<Response<LoginResponse>>(
@@ -55,7 +71,7 @@ const loginButton = async () => {
 				);
 
 				if (data.data) {
-					router.push('home');
+					router.push('/');
 				}
 			} catch (error: any) {
 				if (error.response) {
@@ -81,6 +97,42 @@ const loginButton = async () => {
 		}
 	} finally {
 		loginRequest.value = false;
+	}
+};
+function generateRandomGuestName() {
+	const randomNumber = Math.floor(Math.random() * 10000); // Angka acak 0-999
+
+	return `Guest_${randomNumber}`;
+}
+
+const loginAsGuest = async () => {
+	try {
+		loginGuestRequest.value = true;
+		const res = await axios.post<Response<LoginResponse>>(
+			`http://localhost:9000/auth/register`,
+			{
+				email: generateRandomGuestName() + '@gmail.com',
+				name: generateRandomGuestName(),
+				password: generateRandomGuestName(),
+			}
+		);
+
+		userInfo.value = res.data.data;
+		userId.value = res.data.data.id;
+		const token = res.headers['authorization'];
+		if (token) {
+			const bearerToken = token.split(' ')[1];
+
+			localStorage.setItem('token', bearerToken);
+			localStorage.setItem('userId', userId.value);
+			router.push('profile/create');
+		}
+	} catch (error) {
+		if (error instanceof Error) {
+			console.log(error.message);
+		}
+	} finally {
+		loginGuestRequest.value = false;
 	}
 };
 </script>
@@ -110,6 +162,27 @@ const loginButton = async () => {
 					/>
 				</svg>
 				<span>Error! Invalid email or password.</span>
+			</div>
+			<div
+				role="alert"
+				class="animate__animated animate__fadeInDown alert alert-error absolute -mt-5"
+				:class="{ 'animate__fadeOutUp animate__delay-s': alertStatus }"
+				v-if="invalidField"
+			>
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					class="h-6 w-6 shrink-0 stroke-current"
+					fill="none"
+					viewBox="0 0 24 24"
+				>
+					<path
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						stroke-width="2"
+						d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+					/>
+				</svg>
+				<span>Error! Please fill all field.</span>
 			</div>
 			<div class="card-body max-sm:w-[44vh] backdrop-blur-sm mt-10">
 				<div class="flex flex-col justify-center items-center space-y-4 w-full">
@@ -186,8 +259,23 @@ const loginButton = async () => {
 					</div>
 					<div class="divider text-xs">Or sign with</div>
 					<div class="flex flex-row flex-wrap w-[30vh] justify-between">
-						<button class="btn w-[14vh] bg-accent text-gray-50">Google</button>
-						<button class="btn w-[14vh] bg-accent text-gray-50">Twitter</button>
+						<button class="btn w-[14vh] bg-accent text-gray-50" disabled="true">
+							Google
+						</button>
+						<button
+							class="btn w-[14vh] bg-accent text-gray-50"
+							:disabled="loginGuestRequest"
+							@click="loginAsGuest"
+						>
+							<p v-if="!loginGuestRequest">Guest</p>
+							<div
+								class="flex flex-row justify-center items-center"
+								v-if="loginGuestRequest"
+							>
+								<span class="loading loading-spinner mr-1 -ml-2"></span>
+								Loading
+							</div>
+						</button>
 					</div>
 				</div>
 			</div>

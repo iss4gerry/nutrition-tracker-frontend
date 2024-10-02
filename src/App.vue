@@ -5,7 +5,7 @@ import Footer from './components/Footer.vue';
 import Faq from './components/Faq.vue';
 import { onMounted } from 'vue';
 
-const loginStatus = ref<boolean>();
+const loginStatus = ref<boolean>(false);
 const checkAuth = () => {
 	const token = localStorage.getItem('token');
 	loginStatus.value = !!token;

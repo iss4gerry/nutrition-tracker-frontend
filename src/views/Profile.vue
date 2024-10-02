@@ -57,6 +57,8 @@ const createProfile = async () => {
 		} finally {
 			wrongPassword.value = true;
 		}
+	} else {
+		wrongPassword.value = true;
 	}
 };
 </script>
