@@ -4,13 +4,14 @@ import axios from 'axios';
 import axiosRetry from 'axios-retry';
 import { FoodIdea, FoodIdeaResponse, Response } from '../types/Nutrition';
 
+const baseUrl = import.meta.env.VITE_BACKEND_URL;
 const foodIdea = ref<FoodIdeaResponse<FoodIdea>>();
 axiosRetry(axios, { retries: 3 });
 
 const fetchData = async () => {
 	const userId = localStorage.getItem('userId');
 	const res = await axios.get<Response<FoodIdeaResponse<FoodIdea>>>(
-		`http://localhost:9000/food/recommendation/${userId}`
+		`${baseUrl}/food/recommendation/${userId}`
 	);
 
 	foodIdea.value = res.data.data;

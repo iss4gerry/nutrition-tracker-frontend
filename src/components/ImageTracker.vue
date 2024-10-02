@@ -6,6 +6,7 @@ import axios from 'axios';
 import axiosRetry from 'axios-retry';
 
 axiosRetry(axios, { retries: 3 });
+const baseUrl = import.meta.env.VITE_BACKEND_URL;
 const selectedImage = ref<string | null>(null);
 const imageForRequest = ref<File | null>(null);
 const loading = ref<boolean>(false);
@@ -60,7 +61,7 @@ const analyzeFood = async (event: any) => {
 
 		const response = await axios.post<
 			Response<FoodResponse<ProgressNutrition>>
-		>(`http://localhost:9000/food/nutrition/image`, data);
+		>(`${baseUrl}/food/nutrition/image`, data);
 
 		if (response.data.status === 200) {
 			loading.value = false;

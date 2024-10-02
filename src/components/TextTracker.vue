@@ -5,6 +5,7 @@ import axios from 'axios';
 import axiosRetry from 'axios-retry';
 import { ref, watch } from 'vue';
 
+const baseUrl = import.meta.env.VITE_BACKEND_URL;
 const foodName = ref<string>();
 const foodNutrition = ref<FoodResponse<ProgressNutrition>>();
 const loading = ref<boolean>(false);
@@ -41,7 +42,7 @@ const analyzeFood = async (e: Event) => {
 
 		const response = await axios.post<
 			Response<FoodResponse<ProgressNutrition>>
-		>(`http://localhost:9000/food/nutrition/`, data);
+		>(`${baseUrl}/food/nutrition/`, data);
 
 		if (response.data.status === 200) {
 			loading.value = false;

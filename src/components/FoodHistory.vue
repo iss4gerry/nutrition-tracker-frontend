@@ -4,6 +4,8 @@ import axiosRetry from 'axios-retry';
 import axios from 'axios';
 import { HistoryResponse, Response, Pagination } from '../types/Nutrition';
 
+const baseUrl = import.meta.env.VITE_BACKEND_URL;
+console.log(baseUrl);
 const food = ref<HistoryResponse[]>([]);
 const pagination = ref<Pagination>();
 const userId = localStorage.getItem('userId');
@@ -13,7 +15,7 @@ const limit = 4;
 axiosRetry(axios, { retries: 3 });
 const fetchData = async () => {
 	const { data } = await axios.get<Response<HistoryResponse[], Pagination>>(
-		`http://localhost:9000/history/${userId}`,
+		`${baseUrl}/history/${userId}`,
 		{
 			params: {
 				page: page.value,
