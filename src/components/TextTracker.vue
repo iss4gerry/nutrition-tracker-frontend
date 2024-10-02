@@ -100,7 +100,7 @@ const analyzeFood = async (e: Event) => {
 				v-if="loading"
 			></span>
 			<p
-				v-else
+				v-if="!foodNutrition && !loading"
 				class="flex items-center justify-center text-gray-500 h-[35vh] max-w-[30vh] text-center]"
 			>
 				Your food information will be displayed here

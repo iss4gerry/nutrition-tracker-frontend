@@ -7,7 +7,7 @@ const { foodNutrition } = defineProps<{
 </script>
 
 <template>
-	<div class="w-full h-[40vh] rounded-lg items-center flex flex-col">
+	<div class="w-full h-[20vh] rounded-lg items-center flex flex-col">
 		<div class="flex flex-col min-h-[20vh] justify-center items-center">
 			<h1 class="text-xl font-bold text-accent max-sm:mt-2">
 				FOOD INFORMATION
@@ -19,7 +19,7 @@ const { foodNutrition } = defineProps<{
 				<p class="text-sm">{{ foodNutrition.foodInfo.foodInformation }}</p>
 			</div>
 		</div>
-		<div class="divider mt-10 text-sm">Nutrition</div>
+		<div class="divider mt-5 text-sm">Nutrition</div>
 		<div>
 			<div class="flex flex-row space-x-1 -mt-2">
 				<div
