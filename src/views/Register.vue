@@ -10,6 +10,7 @@ const baseUrl = import.meta.env.VITE_BACKEND_URL;
 const email = ref<string>();
 const username = ref<string>();
 const password = ref<string>();
+const loginRequest = ref<boolean>(false);
 const wrongPassword = ref<boolean>(false);
 const alertStatus = ref<boolean>(false);
 
@@ -28,6 +29,7 @@ watch(wrongPassword, () => {
 const register = async () => {
 	if (email.value && username.value && password.value) {
 		try {
+			loginRequest.value = true;
 			const { data } = await axios.post<Response<LoginResponse>>(
 				`${baseUrl}/auth/register`,
 				{
@@ -46,10 +48,12 @@ const register = async () => {
 			if (error instanceof Error) {
 				console.log(error.message);
 			}
+		} finally {
+			loginRequest.value = false;
 		}
+	} else {
+		wrongPassword.value = true;
 	}
-
-	wrongPassword.value = true;
 };
 </script>
 
@@ -143,8 +147,19 @@ const register = async () => {
 							v-model="password"
 						/>
 					</label>
-					<button class="btn w-[31vh] bg-accent text-gray-50" @click="register">
-						Register
+					<button
+						class="btn w-[31vh] bg-accent text-gray-50"
+						:disabled="loginRequest"
+						@click="register"
+					>
+						<p v-if="!loginRequest">Register</p>
+						<div
+							class="flex flex-row justify-center items-center"
+							v-if="loginRequest"
+						>
+							<span class="loading loading-spinner mr-1 -ml-2"></span>
+							Loading
+						</div>
 					</button>
 					<div class="flex flex-row items-center justify-center">
 						<p class="text-xs mr-1">Already have an account?</p>
