@@ -139,9 +139,7 @@ const loginAsGuest = async () => {
 </script>
 
 <template>
-	<div
-		class="flex justify-center items-center w-min-screen max-sm:w-[44vh] h-[80vh] -mt-10"
-	>
+	<div class="flex justify-center items-center w-min-screen h-[80vh] -mt-10">
 		<div class="card text-primary-content h-[50vh]">
 			<div class="max-sm:flex max-sm:justify-center max-sm:items-center">
 				<div
