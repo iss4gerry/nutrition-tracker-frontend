@@ -12,14 +12,14 @@ const { foodNutrition } = defineProps<{
 			<h1 class="text-xl font-bold text-accent max-sm:mt-2">
 				FOOD INFORMATION
 			</h1>
-			<h1 class="text-xl font-semibold mt-4">
+			<h1 class="text-xl font-semibold mt-2">
 				{{ foodNutrition.foodInfo.foodName }}
 			</h1>
 			<div class="mt-4">
 				<p class="text-sm">{{ foodNutrition.foodInfo.foodInformation }}</p>
 			</div>
 		</div>
-		<div class="divider mt-5 text-sm">Nutrition</div>
+		<div class="divider mt-0 text-sm">Nutrition</div>
 		<div>
 			<div class="flex flex-row space-x-1 -mt-2">
 				<div

@@ -82,13 +82,15 @@ const analyzeFood = async (event: any) => {
 	<div
 		class="animate__animated animate__flipInY container mx-auto flex flex-col items-center space-y-4 p-4 bg-gray-50 rounded-xl shadow-inner max-w-md animate_animated animate__flipInY min-h-[68vh] max-h-[68vh]"
 	>
-		<p class="text-lg font-semibold text-gray-700">Upload your food image</p>
+		<h1 class="text-lg h-[2vh] font-semibold text-gray-700">
+			Upload your food image
+		</h1>
 		<input
 			type="file"
 			class="file-input file-input-bordered file-input-primary w-full max-w-xs rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-primary"
 			@change="handleFileInput"
 		/>
-		<p class="text-sm text-gray-500">Supported formats: JPG, PNG</p>
+		<h1 class="text-sm text-gray-500">Supported formats: JPG, PNG</h1>
 		<p
 			class="text-lg font-semibold text-gray-700"
 			v-if="foodNutrition === undefined"
