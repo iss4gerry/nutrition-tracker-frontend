@@ -31,6 +31,7 @@ watch(wrongPassword, () => {
 const createProfile = async () => {
 	if (gender.value && dateOfBirth.value && weight.value && height.value) {
 		try {
+			loginRequest.value = true;
 			const [year, month, day] = dateOfBirth.value.split('-');
 			const dateBirth = `${year}/${month}/${day}`;
 
@@ -56,6 +57,7 @@ const createProfile = async () => {
 				console.log(error.message);
 			}
 		} finally {
+			loginRequest.value = false;
 			wrongPassword.value = true;
 		}
 	} else {
