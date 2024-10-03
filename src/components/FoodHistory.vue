@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { ref, watch, onMounted } from 'vue';
-import axiosRetry from 'axios-retry';
-import axios from 'axios';
+import axios from '../api';
 import { HistoryResponse, Response, Pagination } from '../types/Nutrition';
 
 const baseUrl = import.meta.env.VITE_BACKEND_URL;
@@ -12,7 +11,6 @@ const userId = localStorage.getItem('userId');
 const page = ref<number>(1);
 const limit = 4;
 
-axiosRetry(axios, { retries: 3 });
 const fetchData = async () => {
 	const { data } = await axios.get<Response<HistoryResponse[], Pagination>>(
 		`${baseUrl}/history/${userId}`,

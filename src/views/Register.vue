@@ -1,11 +1,9 @@
 <script setup lang="ts">
 import { Response, LoginResponse } from '../types/Nutrition';
-import axios from 'axios';
-import axiosRetry from 'axios-retry';
+import axios from '../api';
 import { ref, watch } from 'vue';
 import { useRouter } from 'vue-router';
 
-axiosRetry(axios, { retries: 3 });
 const baseUrl = import.meta.env.VITE_BACKEND_URL;
 const email = ref<string>();
 const username = ref<string>();

@@ -2,10 +2,8 @@
 import FoodInfo from '../components/FoodInfo.vue';
 import { Response, FoodResponse, ProgressNutrition } from '../types/Nutrition';
 import { ref } from 'vue';
-import axios from 'axios';
-import axiosRetry from 'axios-retry';
+import axios from '../api';
 
-axiosRetry(axios, { retries: 3 });
 const baseUrl = import.meta.env.VITE_BACKEND_URL;
 const selectedImage = ref<string | null>(null);
 const imageForRequest = ref<File | null>(null);

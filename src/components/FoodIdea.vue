@@ -1,12 +1,10 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
-import axios from 'axios';
-import axiosRetry from 'axios-retry';
+import axios from '../api';
 import { FoodIdea, FoodIdeaResponse, Response } from '../types/Nutrition';
 
 const baseUrl = import.meta.env.VITE_BACKEND_URL;
 const foodIdea = ref<FoodIdeaResponse<FoodIdea>>();
-axiosRetry(axios, { retries: 3 });
 
 const fetchData = async () => {
 	const userId = localStorage.getItem('userId');

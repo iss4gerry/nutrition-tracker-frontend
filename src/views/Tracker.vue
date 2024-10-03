@@ -6,7 +6,7 @@ import Nutrition from '../components/Nutrition.vue';
 import History from '../components/History.vue';
 import TextTracker from '../components/TextTracker.vue';
 import FoodIdea from '../components/FoodIdea.vue';
-import axios from 'axios';
+import axios from '../api/index';
 import {
 	Response,
 	NutritionResponse,

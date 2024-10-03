@@ -1,11 +1,9 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue';
-import axios from 'axios';
-import axiosRetry from 'axios-retry';
+import axios from '../api';
 import { Response, LoginResponse, ProfileResponse } from '../types/Nutrition';
 import { useRouter } from 'vue-router';
 
-axiosRetry(axios, { retries: 3 });
 const baseUrl = import.meta.env.VITE_BACKEND_URL;
 const loginRequest = ref<boolean>(false);
 const loginGuestRequest = ref<boolean>(false);
