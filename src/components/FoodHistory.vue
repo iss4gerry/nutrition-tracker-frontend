@@ -51,18 +51,18 @@ const nextPage = () => {
 	<div class="min-h-[80vh] flex flex-col items-center max-sm:w-[40vh] mt-5">
 		<div class="card-container min-h-[66vh]" v-if="food.length > 0">
 			<div
-				class="card-body m-2 md:mt-5 md:mb-5 bg-slate-50 rounded-2xl p-6 max-h-[130px] md:max-h-[140px]"
+				class="card-body m-2 md:mt-5 md:mb-5 bg-slate-50 glass rounded-2xl p-6 max-h-[130px] md:max-h-[140px]"
 				v-for="(data, index) in food"
 				:key="index"
 			>
-				<h2 class="card-title">{{ data.foodName }}</h2>
-				<div class="flex justify-between items-start">
-					<div class="text-start flex-grow">
-						<p class="multiline-ellipsis">
+				<div class="flex flex-row justify-between">
+					<div class="flex-col flex">
+						<h2 class="card-title">{{ data.foodName }}</h2>
+						<p class="multiline-ellipsis text-start min-h-[5vh]">
 							{{ data.foodInformation }}
 						</p>
 					</div>
-					<button class="btn btn-primary ml-4">Detail</button>
+					<button class="btn btn-primary ml-4 mt-3">Detail</button>
 				</div>
 			</div>
 		</div>

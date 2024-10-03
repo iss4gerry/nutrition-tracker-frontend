@@ -41,78 +41,49 @@ onMounted(() => {
 		<div v-if="foodIdea">
 			<div class="card-container mt-4">
 				<div
-					class="card-body m-2 md:mt-1 bg-primary rounded-2xl p-6 max-h-[130px] md:max-h-[130px]"
+					class="card-body m-2 md:mt-1 bg-primary bg-opacity-0 p-2 max-h-[130px] max-w-[30vh] min-h-[130px] min-w-[30vh]"
 				>
-					<h2
-						class="card-title font-semibold text-base max-sm:-mt-3 -mt-3 text-start"
-					>
-						{{ foodIdea.food1.foodName }}
-					</h2>
-					<div class="flex justify-between items-start">
-						<div class="text-start flex-grow">
-							<p class="multiline-ellipsis text-sm max-sm:-mb-3">
-								{{ foodIdea.food1.information }}
-							</p>
-						</div>
-						<button class="btn btn-sm btn-accent ml-4">Detail</button>
+					<div class="flex flex-col">
+						<h2
+							class="card-title font-semibold text-sm max-sm:-mt-3 -mt-3 text-start"
+						>
+							{{ foodIdea.food1.foodName }}
+						</h2>
+						<p class="multiline-ellipsis text-xs max-sm:-mb-3 text-start">
+							{{ foodIdea.food1.information }}
+						</p>
 					</div>
+					<button class="btn btn-sm btn-accent mt-3">Detail</button>
 				</div>
-			</div>
-			<div class="card-container">
 				<div
-					class="card-body m-2 md:mt-1 bg-primary rounded-2xl p-6 max-h-[130px] md:max-h-[130px]"
+					class="card-body m-2 md:mt-1 bg-primary bg-opacity-0 p-2 max-h-[130px] max-w-[30vh] min-h-[130px] min-w-[30vh]"
 				>
-					<h2
-						class="card-title font-semibold text-base max-sm:-mt-3 -mt-3 text-start"
-					>
-						{{ foodIdea.food2.foodName }}
-					</h2>
-					<div class="flex justify-between items-start">
-						<div class="text-start flex-grow">
-							<p class="multiline-ellipsis text-sm max-sm:-mb-3">
-								{{ foodIdea.food2.information }}
-							</p>
-						</div>
-						<button class="btn btn-sm btn-accent ml-4">Detail</button>
+					<div class="flex flex-col">
+						<h2
+							class="card-title font-semibold text-sm max-sm:-mt-3 -mt-3 text-start"
+						>
+							{{ foodIdea.food2.foodName }}
+						</h2>
+						<p class="multiline-ellipsis text-xs max-sm:-mb-3 text-start">
+							{{ foodIdea.food2.information }}
+						</p>
 					</div>
+					<button class="btn btn-sm btn-accent mt-3">Detail</button>
 				</div>
-			</div>
-			<div class="card-container">
 				<div
-					class="card-body m-2 md:mt-1 bg-primary rounded-2xl p-6 max-h-[130px] md:max-h-[130px]"
+					class="card-body m-2 md:mt-1 bg-primary bg-opacity-0 p-2 max-h-[130px] max-w-[30vh] min-h-[130px] min-w-[30vh]"
 				>
-					<h2
-						class="card-title font-semibold text-base max-sm:-mt-3 -mt-3 text-start"
-					>
-						{{ foodIdea.food3.foodName }}
-					</h2>
-					<div class="flex justify-between items-start">
-						<div class="text-start flex-grow">
-							<p class="multiline-ellipsis text-sm max-sm:-mb-3">
-								{{ foodIdea.food3.information }}
-							</p>
-						</div>
-						<button class="btn btn-sm btn-accent ml-4">Detail</button>
+					<div class="flex flex-col">
+						<h2
+							class="card-title font-semibold text-sm max-sm:-mt-3 -mt-3 text-start"
+						>
+							{{ foodIdea.food3.foodName }}
+						</h2>
+						<p class="multiline-ellipsis text-xs max-sm:-mb-3 text-start">
+							{{ foodIdea.food3.information }}
+						</p>
 					</div>
-				</div>
-			</div>
-			<div class="card-container">
-				<div
-					class="card-body m-2 md:mt-1 bg-primary rounded-2xl p-6 max-h-[130px] md:max-h-[130px]"
-				>
-					<h2
-						class="card-title font-semibold text-base max-sm:-mt-3 -mt-3 text-start"
-					>
-						{{ foodIdea.food4.foodName }}
-					</h2>
-					<div class="flex justify-between items-start">
-						<div class="text-start flex-grow">
-							<p class="multiline-ellipsis text-sm max-sm:-mb-3">
-								{{ foodIdea.food4.information }}
-							</p>
-						</div>
-						<button class="btn btn-sm btn-accent ml-4">Detail</button>
-					</div>
+					<button class="btn btn-sm btn-accent mt-3">Detail</button>
 				</div>
 			</div>
 		</div>
@@ -123,8 +94,8 @@ onMounted(() => {
 .multiline-ellipsis {
 	display: -webkit-box;
 	-webkit-box-orient: vertical;
-	-webkit-line-clamp: 2;
-	line-clamp: 2;
+	-webkit-line-clamp: 3;
+	line-clamp: 3;
 	overflow: hidden;
 	text-overflow: ellipsis;
 }

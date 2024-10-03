@@ -61,7 +61,7 @@ const analyzeFood = async (e: Event) => {
 	<div class="max-sm:flex max-sm:justify-center max-sm:items-center">
 		<div
 			role="alert"
-			class="animate__animated animate__fadeInDown alert alert-error absolute -mt-12 max-sm:-mt-5 max-sm:flex max-sm:flex-row max-sm:items-center max-sm:justify-center max-sm:w-[40vh]"
+			class="animate__animated animate__fadeInDown alert alert-error absolute -mt-12 max-sm:-mt-5 max-sm:flex max-sm:flex-row max-sm:items-center max-sm:justify-center max-sm:w-[40vh] md:-mt-20"
 			:class="{ 'animate__fadeOutUp animate__delay-s': alertStatus }"
 			v-if="wrongPassword"
 		>
