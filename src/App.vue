@@ -22,7 +22,6 @@ import Faq from './components/Faq.vue';
 					<h1 class="text-4xl ml-4 font-bold">Frequently Asked Questions</h1>
 					<Faq></Faq>
 				</div>
-				<div class="divider"></div>
 				<Footer id="Faq"></Footer>
 			</div>
 		</div>
