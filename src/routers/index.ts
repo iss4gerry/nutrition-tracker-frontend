@@ -29,6 +29,7 @@ const routes: Array<RouteRecordRaw> = [
 		name: 'createProfile',
 		component: Profile,
 	},
+	{ path: '/:pathMatch(.*)', redirect: '/' },
 ];
 
 export const router = createRouter({
